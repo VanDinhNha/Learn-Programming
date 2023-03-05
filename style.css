@@ -83,6 +83,11 @@ body {
     padding: 5px;
     cursor: pointer;
 }
+.menu-sub{
+    position: absolute;
+    z-index: -1;
+    transition: all 2s;
+}
 .menu-item::before{
     content: "";
     background-color: var(--background-main);
@@ -115,6 +120,9 @@ body {
     margin-left: 10px;
     font-size: 15px;
 }
+.menu-name{
+    margin-left: 5px;
+}
 .menu-link::before{
     content: "";
     background-color: var(--background-main);
@@ -135,6 +143,7 @@ body {
     width: 100%;
     transition: all 1s;
 }
+
 /*content*/
 .content{
     width: 80%;
