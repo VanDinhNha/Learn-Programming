@@ -13,13 +13,13 @@
 <body>
     <div class="wrapper">
         <div class="body">
-            <div class="layout">
-                <div class="border-avatar">
+            <div class="menu">
+                <div class="menu-border-avatar">
                     <img src="./image/avatar.png" alt="avatar" class="avatar">
                 </div>
                 <p class="name">Văn Đình Nhã</p>
                 <ul class="menu-ul">
-                    <li class="menu-li">
+                    <li class="menu-ul-li">
                         Tổng Kết Kiến Thức
                         <ul>
                             <!-- <li class="menu-item">
@@ -35,8 +35,8 @@
                                     <span class="menu-name">Git</span>
                                 </div>
                             </li> -->
-                            <li class="menu-item" id="html">
-                                <div class="menu-main">
+                            <li class="menu-item">
+                                <div class="menu-item__parent">
                                     <svg width="20px" height="20px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -46,16 +46,16 @@
                                             <path d="M9.5 17.5L8.5 8H24L23.5 11H11.5L12 14.5H23L22 24L16 26L10 24L9.5 19H12.5L13 21.5L16 22.5L19 21.5L19.5 17.5H9.5Z" fill="white"></path> 
                                         </g>
                                     </svg>
-                                    <span class="menu-name">HTML</span>
+                                    <span class="menu-item-main__name">HTML</span>
                                 </div>
-                                <div id="html_sub" class="menu-sub">
-                                    <a href="#" class="menu-link">
+                                <div class="menu-item__child">
+                                    <a href="#" class="menu-item__link">
                                         Tag Name
                                     </a>
-                                    <a href="#" class="menu-link">
+                                    <a href="#" class="menu-item__link">
                                         Tag Name
                                     </a>
-                                    <a href="#" class="menu-link">
+                                    <a href="#" class="menu-item__link">
                                         Tag Name
                                     </a>
                                 </div>
@@ -79,7 +79,11 @@
                 </ul>
             </div>
                 
-            <div class="content"></div>
+            <div class="content">
+                <div class="title">
+                    Tag name
+                </div>
+            </div>
         </div>
         <div class="footer"></div>
     </div>
