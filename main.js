@@ -1,5 +1,4 @@
-const menu_html = document.querySelector("#html");
-const menu_htnl_sub = document.querySelector("#html_sub");
-menu_html.addEventListener("click", () => {
-    menu_htnl_sub.classList.toggle("menu-sub");
-})
+const activeMenu = (opj) => {
+    if(opj.childNodes.length > 3)
+        opj.childNodes[3].classList.toggle("menu-item__child")
+};
