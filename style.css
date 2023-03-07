@@ -82,16 +82,74 @@ body {
 .body{
     display: flex;
 }
+/*icon active menu*/
+#menu_checkbox {
+    display: none;
+}
+  
+.icon-menu {
+    position: fixed;
+    top: 40px;
+    left: 10px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: -30px auto 0 auto;
+    cursor: pointer;
+}
+  
+.icon-menu div {
+    position: relative;
+    top: 0;
+    height: 6px;
+    background-color: #fff;
+    margin-bottom: 3px;
+    transition: 0.3s ease transform, 0.3s ease top, 0.3s ease width,
+      0.3s ease right;
+    border-radius: 2px;
+}
+  
+.icon-menu div:first-child {
+    transform-origin: 0;
+}
+  
+.icon-menu div:last-child {
+    margin-bottom: 0;
+    transform-origin: 60px;
+}
+  
+.icon-menu div:nth-child(2) {
+    right: 0;
+    width: 30px;
+}
+  
+#menu_checkbox:checked + .icon-menu div:first-child {
+    top: -8px;
+    transform: rotateZ(45deg);
+}
+
+#menu_checkbox:checked + .icon-menu div:last-child {
+    top: 29px;
+    right: 5px;
+    transform: rotateZ(45deg);
+}
+  
+#menu_checkbox:checked + .icon-menu div:nth-child(2) {
+    width: 47px;
+    top: 3;
+    right: 6px;
+    transform: rotateZ(-45deg);
+}
 /*layout*/
 .menu{
     width: 250px;
     height: 100vh;
-    /* max-height: 100vh; */
     background-color: var(--background-dark);
     overflow-y: auto;
     position: fixed;
     inset: 0;
     transition: linear 1s;
+    z-index: 1;
 }
 .menu-border-avatar{
     margin: 40px;
@@ -198,7 +256,16 @@ body {
     width: 100%;
     transition: all 1s;
 }
-
+.mobile-menu-background{
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,.5);
+    margin-left: auto;
+    display: none;
+    transition: linear 2s;
+}
 /*content*/
 .content{
     width: calc(100% - 250px);
@@ -210,6 +277,7 @@ body {
 .content-body{
     max-width: 980px;
     margin: 0 auto;
+    transition: linear 2s;
 }
 .content-body-title__parent{
     text-align: center;
@@ -227,7 +295,7 @@ body {
 .content-body-title__parent--text{
     background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
     -webkit-background-clip: text;
-    font-size: 2cm;
+    font-size: 60px;
     color: transparent;
 }
 .content-body-title__child{
@@ -249,4 +317,52 @@ body {
 /*footer*/
 .footer{
 
+}
+
+@media (min-width: 992px) {
+    
+}
+
+/*ui tablet*/
+@media (min-width: 768px) and (max-width: 991px) {
+    .content-body{
+        margin-top: 30px;
+        transition: linear 2s;
+    }
+    .icon-menu{
+        z-index: 2;
+    }
+    .toggle-menu{
+        margin-left: -250px;
+    }
+    .content{
+        width: 100%;
+    }
+    .content-body-title__parent::after{
+        width: 70%;
+    }
+}
+
+/*ui mobile*/
+@media (max-width: 767px) {
+    .content-body{
+        margin-top: 30px;
+        transition: linear 2s;
+    }
+    .icon-menu{
+        z-index: 2;
+    }
+    .toggle-menu{
+        margin-left: -250px;
+    }
+    .content{
+        width: 100%;
+    }
+    .content-body-title__parent::after{
+        width: 90%;
+    }
+    .content-body-title__parent--text{
+        font-size: 40px;
+        transition: linear 2s;
+    }
 }
