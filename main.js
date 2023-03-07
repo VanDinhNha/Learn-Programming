@@ -2,6 +2,7 @@ const checkMenu = document.querySelector("#menu_checkbox");
 const menu = document.querySelector(".menu");
 const mobile_menu_background = document.querySelector(".mobile-menu-background");
 const icon_menu = document.querySelector(".icon-menu");
+const btn_copy = document.querySelector(".btn-copy");
 
 const selectMenu = (opj) => {
     if(opj.childNodes.length > 3)
@@ -22,7 +23,6 @@ function scrolledMenu(){
         icon_menu.removeAttribute("style")
     }
 }
-
 menu.addEventListener('scroll', scrolledMenu);
 
 function scrolledWindow(event){
@@ -32,5 +32,9 @@ function scrolledWindow(event){
         icon_menu.removeAttribute("style")
     }
 }
-
 window.addEventListener('scroll', scrolledWindow);
+
+const copy_code = (opj) => {
+    navigator.clipboard.writeText(opj.parentElement.childNodes[3].childNodes[1].textContent)
+}
+

@@ -1,7 +1,6 @@
 :root{
     --background-dark: #161616;
     --background-main: #000;
-    --background-code: #1e1f35;
     --color-text: #4e4d4d;
     --color-text-active: #fff;
     --color-main1: #00f8ec;
@@ -303,17 +302,7 @@ body {
     margin: 10px;
     font-size: 24px;
 }
-.content-body__frame-code{
-    background-color: var(--background-code);
-    border-radius: 10px;
-    margin: 10px 10px;
-    padding: 10px;
-}
-.content-body__frame-code--text{
-    width: 100%;
-    background-color: transparent;
-    border: none;
-}
+
 /*footer*/
 .footer{
 
