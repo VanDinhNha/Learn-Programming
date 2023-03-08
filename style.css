@@ -316,10 +316,12 @@ body {
 .content-body--attention{
     font-size: 1rem;
     color: transparent;
-    margin: 1rem 0;
+    margin: 1rem;
     line-height: 1.5rem;
-    padding: 0 10px;
+    padding: 10px;
     font-style: italic;
+    border: solid 1px #fff;
+    border-radius: 10px;
 }
 .content-body-detail__code{
     margin: -10px 1rem 0px 1rem;
@@ -345,6 +347,9 @@ body {
 .content-body-detail__code:hover .btn-copy{
     opacity: 1;
 }
+.btn-copy:active{
+    top: 20px
+}
 .content-body-detail__code--describe{
     font-size: 1rem;
     color: transparent;
@@ -354,9 +359,22 @@ body {
 .content-body-detail__code--attention{
     font-size: 1rem;
     color: transparent;
-    margin: 1rem 0;
+    margin: 1rem;
     line-height: 1.5rem;
+    padding: 10px;
     font-style: italic;
+    border: solid 1px #fff;
+    border-radius: 10px;
+}
+.cotent-body-detail__code--demo{
+    min-height: 100px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
 }
 
 /*footer*/

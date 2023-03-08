@@ -3,6 +3,7 @@ const menu = document.querySelector(".menu");
 const mobile_menu_background = document.querySelector(".mobile-menu-background");
 const icon_menu = document.querySelector(".icon-menu");
 const btn_copy = document.querySelector(".btn-copy");
+const endpoint = "https://vandinhnha.github.io/Code_Forntend/data.json";
 
 const selectMenu = (opj) => {
     if(opj.childNodes.length > 3)
@@ -37,3 +38,11 @@ window.addEventListener('scroll', scrolledWindow);
 const copy_code = (opj) => {
     navigator.clipboard.writeText(opj.parentElement.childNodes[3].childNodes[1].textContent)
 }
+
+async function showData(){
+    debugger
+    const response = await fetch(endpoint);
+    const code = await response.json();
+    console.log(code);
+}
+

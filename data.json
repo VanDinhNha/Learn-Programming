@@ -1,25 +1,79 @@
 [
     {
-        "id": "js1",
-        "content": {
-            "title": "Chèn Javascript vào HTML",
-            "describe": "Để chèn Javascript vào HTML ta có 2 cách",
-            "attention": "Chú ý; klksalkadlala ndsanlksan  ákldlák",
-            "detail": {
-                "detail_1": {
-                    "title": "cách 1",
-                    "code": {
-                        "1": "function scrolledMenu(){",
-                        "2": "    if(!menu.classList.contains(\"toggle-menu\")){",
-                        "3": "        menu.scrollTop > 30 ?",
-                        "4": "        icon_menu.setAttribute(\"style\", `margin-top: -${menu.scrollTop}px`) :",
-                        "5": "        icon_menu.removeAttribute(\"style\")",
-                        "6": "    }",
-                        "7": "}"
+        "basic": {
+            "visual-code":{
+                "title": "Visual Code",
+                "icon": "<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"> <g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g><g id=\"SVGRepo_iconCarrier\"> <path d=\"M6 28L4 3H28L26 28L16 31L6 28Z\" fill=\"#E44D26\"></path> <path d=\"M26 5H16V29.5L24 27L26 5Z\" fill=\"#F16529\"></path> <path d=\"M9.5 17.5L8.5 8H24L23.5 11H11.5L12 14.5H23L22 24L16 26L10 24L9.5 19H12.5L13 21.5L16 22.5L19 21.5L19.5 17.5H9.5Z\" fill=\"white\"></path> </g></svg>",
+                "content": ""
+            },
+            "git": {
+                "title": "Git",
+                "icon": "<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"> <g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g><g id=\"SVGRepo_iconCarrier\"> <path d=\"M6 28L4 3H28L26 28L16 31L6 28Z\" fill=\"#E44D26\"></path> <path d=\"M26 5H16V29.5L24 27L26 5Z\" fill=\"#F16529\"></path> <path d=\"M9.5 17.5L8.5 8H24L23.5 11H11.5L12 14.5H23L22 24L16 26L10 24L9.5 19H12.5L13 21.5L16 22.5L19 21.5L19.5 17.5H9.5Z\" fill=\"white\"></path> </g></svg>",
+                "content": ""
+            },
+            "html": {
+                "title": "HTML",
+                "icon": "<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"> <g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g><g id=\"SVGRepo_iconCarrier\"> <path d=\"M6 28L4 3H28L26 28L16 31L6 28Z\" fill=\"#E44D26\"></path> <path d=\"M26 5H16V29.5L24 27L26 5Z\" fill=\"#F16529\"></path> <path d=\"M9.5 17.5L8.5 8H24L23.5 11H11.5L12 14.5H23L22 24L16 26L10 24L9.5 19H12.5L13 21.5L16 22.5L19 21.5L19.5 17.5H9.5Z\" fill=\"white\"></path> </g></svg>",
+                "content": ""
+            },
+            "css": {
+                "title": "CSS",
+                "icon": "<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"> <g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g><g id=\"SVGRepo_iconCarrier\"> <path d=\"M6 28L4 3H28L26 28L16 31L6 28Z\" fill=\"#E44D26\"></path> <path d=\"M26 5H16V29.5L24 27L26 5Z\" fill=\"#F16529\"></path> <path d=\"M9.5 17.5L8.5 8H24L23.5 11H11.5L12 14.5H23L22 24L16 26L10 24L9.5 19H12.5L13 21.5L16 22.5L19 21.5L19.5 17.5H9.5Z\" fill=\"white\"></path> </g></svg>",
+                "content": ""
+            },
+            "javascript": {
+                "title": "Javascript",
+                "icon": "<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"> <g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g><g id=\"SVGRepo_iconCarrier\"> <path d=\"M6 28L4 3H28L26 28L16 31L6 28Z\" fill=\"#E44D26\"></path> <path d=\"M26 5H16V29.5L24 27L26 5Z\" fill=\"#F16529\"></path> <path d=\"M9.5 17.5L8.5 8H24L23.5 11H11.5L12 14.5H23L22 24L16 26L10 24L9.5 19H12.5L13 21.5L16 22.5L19 21.5L19.5 17.5H9.5Z\" fill=\"white\"></path> </g></svg>",
+                "content": [
+                    {
+                        "id": "1",
+                        "content": {
+                            "title": "Chèn Javascript vào HTML",
+                            "describe": "Để chèn Javascript vào HTML ta có 2 cách",
+                            "attention": "Chú ý; klksalkadlala ndsanlksan  ákldlák",
+                            "detail": {
+                                "detail_1": {
+                                    "title": "cách 1",
+                                    "code": {
+                                        "1": "function scrolledMenu(){",
+                                        "2": "    if(!menu.classList.contains(\"toggle-menu\")){",
+                                        "3": "        menu.scrollTop > 30 ?",
+                                        "4": "        icon_menu.setAttribute(\"style\", `margin-top: -${menu.scrollTop}px`) :",
+                                        "5": "        icon_menu.removeAttribute(\"style\")",
+                                        "6": "    }",
+                                        "7": "}"
+                                    },
+                                    "describeCode": "đây là code test",
+                                    "attentionCode": ""
+                                }
+                            }
+                        }
                     },
-                    "describeCode": "đây là code test",
-                    "attentionCode": ""
-                }
+                    {
+                        "id": "2",
+                        "content": {
+                            "title": "Chèn Javascript vào HTML",
+                            "describe": "Để chèn Javascript vào HTML ta có 2 cách",
+                            "attention": "Chú ý; klksalkadlala ndsanlksan  ákldlák",
+                            "detail": {
+                                "detail_1": {
+                                    "title": "cách 1",
+                                    "code": {
+                                        "1": "function scrolledMenu(){",
+                                        "2": "    if(!menu.classList.contains(\"toggle-menu\")){",
+                                        "3": "        menu.scrollTop > 30 ?",
+                                        "4": "        icon_menu.setAttribute(\"style\", `margin-top: -${menu.scrollTop}px`) :",
+                                        "5": "        icon_menu.removeAttribute(\"style\")",
+                                        "6": "    }",
+                                        "7": "}"
+                                    },
+                                    "describeCode": "đây là code test",
+                                    "attentionCode": ""
+                                }
+                            }
+                        }
+                    }
+                ]
             }
         }
     }
