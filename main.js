@@ -4,8 +4,8 @@ const mobile_menu_background = document.querySelector(".mobile-menu-background")
 const icon_menu = document.querySelector(".icon-menu");
 const btn_copy = document.querySelector(".btn-copy");
 
-//const endpoint = "https://vandinhnha.github.io/Code_Forntend/data.json";
-const endpoint = "./data.json"
+const endpoint = "https://vandinhnha.github.io/Code_Forntend/data.json";
+//const endpoint = "./data.json"
 const menu_list = document.querySelector("#menu_list");
 
 const selectMenu = (opj) => {
