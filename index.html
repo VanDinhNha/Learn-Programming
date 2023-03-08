@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="styleCode.css">
+    <!-- <link rel="stylesheet" href="styleCode.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="menu-item__child">
                                     <a href="#" class="menu-item__link">
-                                        Tag Name
+                                        Chèn Javascript vào HTML
                                     </a>
                                     <a href="#" class="menu-item__link">
                                         Tag Name
@@ -74,18 +74,21 @@
             </div>
             <div class="content">
                 <div class="content-body">
-                    <div class="content-body-title__parent">
-                        <span class="content-body-title__parent--text">
-                            Tag name
+                    <div class="content-body-title">
+                        <span class="content-body-title--text">
+                            Chèn Javascript vào HTML
                         </span>
                     </div>
-                    <label class="content-body-title__child">Code Mẫu:</label>
-                    <div class="frame-code">
-                        <button class="btn-copy" onclick="copy_code(this)">
-                            <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ffffff" d="M768 832a128 128 0 0 1-128 128H192A128 128 0 0 1 64 832V384a128 128 0 0 1 128-128v64a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64h64z"></path><path fill="#ffffff" d="M384 128a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64V192a64 64 0 0 0-64-64H384zm0-64h448a128 128 0 0 1 128 128v448a128 128 0 0 1-128 128H384a128 128 0 0 1-128-128V192A128 128 0 0 1 384 64z"></path></g></svg>
-                        </button>
-                        <deckgo-highlight-code language="javascript">
-                            <code slot="code">
+                    <p class="content-body--describe">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, pariatur inventore tempora voluptas fugiat asperiores earum accusamus voluptates eveniet adipisci cum facere repellat beatae consectetur! Voluptate tenetur exercitationem consequatur beatae?</p>
+                    <P class="content-body--attention">Lưu ý: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla commodi neque qui iste est, sit distinctio ea illum suscipit deleniti esse voluptas. Commodi obcaecati porro saepe aspernatur iure expedita laborum.</P>
+                    <div class="content-body-detail">
+                        <label class="content-body-detail__title--text">Code Mẫu:</label>
+                        <div class="content-body-detail__code">
+                            <button class="btn-copy" onclick="copy_code(this)">
+                                <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ffffff" d="M768 832a128 128 0 0 1-128 128H192A128 128 0 0 1 64 832V384a128 128 0 0 1 128-128v64a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64h64z"></path><path fill="#ffffff" d="M384 128a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64V192a64 64 0 0 0-64-64H384zm0-64h448a128 128 0 0 1 128 128v448a128 128 0 0 1-128 128H384a128 128 0 0 1-128-128V192A128 128 0 0 1 384 64z"></path></g></svg>
+                            </button>
+                            <deckgo-highlight-code language="javascript">
+                                <code slot="code">
 function scrolledMenu(){
     if(!menu.classList.contains("toggle-menu")){
         menu.scrollTop > 30 ? 
@@ -93,9 +96,14 @@ function scrolledMenu(){
         icon_menu.removeAttribute("style")
     }
 }
-                            </code>
-                            </deckgo-highlight-code>
+                                </code>
+                                </deckgo-highlight-code>
+                                <p class="content-body-detail__code--describe">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis dolorum id eligendi dicta eos vero suscipit minima veniam, aliquam, aut, distinctio facere harum velit voluptate quod praesentium officia unde! Odio.</p>
+                                <P class="content-body-detail__code--attention">Lưu ý: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla commodi neque qui iste est, sit distinctio ea illum suscipit deleniti esse voluptas. Commodi obcaecati porro saepe aspernatur iure expedita laborum.</P>
+                        </div>
                     </div>
+                    
+                    
                 </div>
             </div>
         </div>

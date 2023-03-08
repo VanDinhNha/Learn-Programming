@@ -37,4 +37,3 @@ window.addEventListener('scroll', scrolledWindow);
 const copy_code = (opj) => {
     navigator.clipboard.writeText(opj.parentElement.childNodes[3].childNodes[1].textContent)
 }
-

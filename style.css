@@ -5,6 +5,7 @@
     --color-text-active: #fff;
     --color-main1: #00f8ec;
     --color-main2: #f000f8; 
+    --background-code: #1e1f35;
 }
 *,
 *:before,
@@ -173,11 +174,13 @@ body {
     -webkit-background-clip: text;
 }
 .menu-ul{
+    background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
+    -webkit-background-clip: text;
     margin-top: 10px;
     padding: 0 10px;
 }
 .menu-ul-li{
-    color: var(--color-text-active);
+    color: transparent;
     font-size: 20px;
 }
 .menu-item{
@@ -202,7 +205,8 @@ body {
 }
 .menu-item__parent::before{
     content: "";
-    background-color: var(--background-main);
+    /* background-color: var(--background-main); */
+    background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
     width: 2px;
     height: 100%;
     position: absolute;
@@ -213,7 +217,7 @@ body {
     border-radius: 0px 20px 20px 0px;
 }
 .menu-item__parent:hover{
-    color: var(--color-text-active);
+    color: var(--background-main);
     transition: linear 1s;
 }
 .menu-item__parent:hover::before{
@@ -263,7 +267,7 @@ body {
     background-color: rgba(0,0,0,.5);
     margin-left: auto;
     display: none;
-    transition: linear 2s;
+    transition: linear 1s;
 }
 /*content*/
 .content{
@@ -276,13 +280,15 @@ body {
 .content-body{
     max-width: 980px;
     margin: 0 auto;
-    transition: linear 2s;
+    transition: linear 1s;
+    background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
+    -webkit-background-clip: text;
 }
-.content-body-title__parent{
+.content-body-title{
     text-align: center;
     margin: 20px 0px;
 }
-.content-body-title__parent::after{
+.content-body-title::after{
     content: "";
     display: block;
     width: 50%;
@@ -291,16 +297,66 @@ body {
     background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
     transition: linear 1s;
 }
-.content-body-title__parent--text{
-    background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
-    -webkit-background-clip: text;
+.content-body-title--text{
     font-size: 60px;
     color: transparent;
 }
-.content-body-title__child{
-    color: var(--color-main1);
+.content-body-detail__title--text{
+    color: transparent;
     margin: 10px;
     font-size: 24px;
+}
+.content-body--describe{
+    font-size: 1rem;
+    color: transparent;
+    margin: 1rem 0;
+    line-height: 1.5rem;
+    padding: 0 10px;
+}
+.content-body--attention{
+    font-size: 1rem;
+    color: transparent;
+    margin: 1rem 0;
+    line-height: 1.5rem;
+    padding: 0 10px;
+    font-style: italic;
+}
+.content-body-detail__code{
+    margin: -10px 1rem 0px 1rem;
+}
+.deckgo-highlight-code-carbon{
+    background-color: var(--background-code);
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    overflow-x: auto;
+}
+.btn-copy{
+    position: relative;
+    top: 35px;
+    left: 95%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: linear 1s;
+    opacity: 0;
+}
+.content-body-detail__code:hover .btn-copy{
+    opacity: 1;
+}
+.content-body-detail__code--describe{
+    font-size: 1rem;
+    color: transparent;
+    margin: 1rem 0;
+    line-height: 1.5rem;
+}
+.content-body-detail__code--attention{
+    font-size: 1rem;
+    color: transparent;
+    margin: 1rem 0;
+    line-height: 1.5rem;
+    font-style: italic;
 }
 
 /*footer*/
@@ -316,7 +372,7 @@ body {
 @media (min-width: 768px) and (max-width: 991px) {
     .content-body{
         margin-top: 30px;
-        transition: linear 2s;
+        transition: linear 1s;
     }
     .icon-menu{
         z-index: 2;
@@ -327,8 +383,11 @@ body {
     .content{
         width: 100%;
     }
-    .content-body-title__parent::after{
+    .content-body-title::after{
         width: 70%;
+    }
+    .btn-copy{
+        opacity: 1;
     }
 }
 
@@ -336,7 +395,7 @@ body {
 @media (max-width: 767px) {
     .content-body{
         margin-top: 30px;
-        transition: linear 2s;
+        transition: linear 1s;
     }
     .icon-menu{
         z-index: 2;
@@ -347,11 +406,18 @@ body {
     .content{
         width: 100%;
     }
-    .content-body-title__parent::after{
+    .content-body-title::after{
         width: 90%;
     }
-    .content-body-title__parent--text{
+    .content-body-title--text{
         font-size: 40px;
+        transition: linear 1s;
+    }
+    .btn-copy{
+        opacity: 1;
+    }
+    .btn-copy{
+        left: 90%;
         transition: linear 2s;
     }
 }

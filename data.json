@@ -1,0 +1,26 @@
+[
+    {
+        "id": "js1",
+        "content": {
+            "title": "Chèn Javascript vào HTML",
+            "describe": "Để chèn Javascript vào HTML ta có 2 cách",
+            "attention": "Chú ý; klksalkadlala ndsanlksan  ákldlák",
+            "detail": {
+                "detail_1": {
+                    "title": "cách 1",
+                    "code": {
+                        "1": "function scrolledMenu(){",
+                        "2": "    if(!menu.classList.contains(\"toggle-menu\")){",
+                        "3": "        menu.scrollTop > 30 ?",
+                        "4": "        icon_menu.setAttribute(\"style\", `margin-top: -${menu.scrollTop}px`) :",
+                        "5": "        icon_menu.removeAttribute(\"style\")",
+                        "6": "    }",
+                        "7": "}"
+                    },
+                    "describeCode": "đây là code test",
+                    "attentionCode": ""
+                }
+            }
+        }
+    }
+] 
