@@ -148,7 +148,7 @@ body {
     overflow-y: auto;
     position: fixed;
     inset: 0;
-    transition: linear 1s;
+    transition: linear .5s;
     z-index: 1;
 }
 .menu-border-avatar{
@@ -184,7 +184,9 @@ body {
     font-size: 20px;
 }
 .menu-item{
-    /*display: flex;*/
+    position: relative;
+    background-color: var(--background-dark);
+    z-index: 1;
 }
 .menu-item__parent{
     display: flex;
@@ -193,7 +195,7 @@ body {
     text-decoration: none;
     background-color: transparent;
     position: relative;
-    transition: linear 1s;
+    transition: linear .3s;
     z-index: 1;
     padding: 5px;
     cursor: pointer;
@@ -201,7 +203,7 @@ body {
 .menu-item__child{
     display: none;
     z-index: -1;
-    transition: linear 1s;
+    transition: linear .3s;
 }
 .menu-item__parent::before{
     content: "";
@@ -213,16 +215,16 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
-    transition: linear 1s;
+    transition: linear .3s;
     border-radius: 0px 20px 20px 0px;
 }
 .menu-item__parent:hover{
     color: var(--background-main);
-    transition: linear 1s;
+    transition: linear .3s;
 }
 .menu-item__parent:hover::before{
     width: 100%;
-    transition: linear 1s;
+    transition: linear .3s;
 }
 .menu-item__link{
     color: var(--color-text);
@@ -230,7 +232,7 @@ body {
     text-decoration: none;
     background-color: transparent;
     position: relative;
-    transition: linear 1s;
+    transition: linear .3s;
     z-index: 1;
     padding: 5px;
     margin: 5px 0px 0px 10px;
@@ -248,16 +250,16 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
-    transition: linear 1s;
+    transition: linear .3s;
     /* border-radius: 0px 100% 100% 0px; */
 }
 .menu-item__link:hover{
     color: var(--color-text-active);
-    transition: linear 1s;
+    transition: linear .3s;
 }
 .menu-link:hover::before{
     width: 100%;
-    transition: all 1s;
+    transition: all .3s;
 }
 .mobile-menu-background{
     position: fixed;
@@ -267,7 +269,7 @@ body {
     background-color: rgba(0,0,0,.5);
     margin-left: auto;
     display: none;
-    transition: linear 1s;
+    transition: linear .3s;
 }
 /*content*/
 .content{
@@ -275,12 +277,12 @@ body {
     min-height: 100vh;
     background-color: var(--background-main);
     margin-left: auto;
-    transition: linear 1s;
+    transition: linear .3s;
 }
 .content-body{
     max-width: 980px;
     margin: 0 auto;
-    transition: linear 1s;
+    transition: linear .3s;
     background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
     -webkit-background-clip: text;
 }
@@ -295,7 +297,7 @@ body {
     height: 3px;
     margin: 10px auto;
     background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
-    transition: linear 1s;
+    transition: linear .3s;
 }
 .content-body-title--text{
     font-size: 60px;
@@ -330,8 +332,9 @@ body {
     background-color: var(--background-code);
     border-radius: 1rem;
     font-size: 1.2rem;
-    line-height: 1.5rem;
+    line-height: 2rem;
     overflow-x: auto;
+    font-weight: bold;
 }
 .btn-copy{
     position: relative;
@@ -341,7 +344,7 @@ body {
     border: none;
     outline: none;
     cursor: pointer;
-    transition: linear 1s;
+    transition: linear .3s;
     opacity: 0;
 }
 .content-body-detail__code:hover .btn-copy{
@@ -390,7 +393,7 @@ body {
 @media (min-width: 768px) and (max-width: 991px) {
     .content-body{
         margin-top: 30px;
-        transition: linear 1s;
+        transition: linear .3s;
     }
     .icon-menu{
         z-index: 2;
@@ -413,7 +416,7 @@ body {
 @media (max-width: 767px) {
     .content-body{
         margin-top: 30px;
-        transition: linear 1s;
+        transition: linear .3s;
     }
     .icon-menu{
         z-index: 2;
@@ -429,7 +432,7 @@ body {
     }
     .content-body-title--text{
         font-size: 40px;
-        transition: linear 1s;
+        transition: linear .3s;
     }
     .btn-copy{
         opacity: 1;
@@ -439,3 +442,76 @@ body {
         transition: linear 2s;
     }
 }
+/*loading*/
+* .loading{
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+.svg-frame {
+    position: relaative;
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .svg-frame svg {
+    position: absolute;
+    transition: .5s;
+    z-index: calc(1 - (0.2 * var(--j)));
+    transform-origin: center;
+    width: 344px;
+    height: 344px;
+    fill: none;
+  }
+  
+  .svg-frame:hover svg {
+    transform: rotate(-80deg) skew(30deg) translateX(calc(45px * var(--i))) translateY(calc(-35px * var(--i)));
+  }
+  
+  .svg-frame svg #center {
+    transition: .5s;
+    transform-origin: center;
+  }
+  
+  .svg-frame:hover svg #center {
+    transform: rotate(-30deg) translateX(45px) translateY(-3px);
+  }
+  
+  #out2 {
+    animation: rotate16 7s ease-in-out infinite alternate;
+    transform-origin: center;
+  }
+  
+  #out3 {
+    animation: rotate16 3s ease-in-out infinite alternate;
+    transform-origin: center;
+    stroke: #ff0;
+  }
+  
+  #inner3,
+  #inner1 {
+    animation: rotate16 4s ease-in-out infinite alternate;
+    transform-origin: center;
+  }
+  
+  #center1 {
+    fill: #ff0;
+    animation: rotate16 2s ease-in-out infinite alternate;
+    transform-origin: center;
+  }
+  
+  @keyframes rotate16 {
+    to {
+      transform: rotate(360deg);
+    }
+  }
