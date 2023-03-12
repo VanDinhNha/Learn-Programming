@@ -164,7 +164,7 @@ body {
     object-fit: cover;
 }
 .name{
-    text-align: center;
+    margin: 0 10px;
     font-size: 30px;
     font-weight: bold;
     color: transparent;
@@ -303,6 +303,9 @@ body {
     font-size: 60px;
     color: transparent;
 }
+.content-body-detail{
+    padding: 0px 1rem;
+}
 .content-body-detail__title--text{
     color: transparent;
     margin: 10px;
@@ -326,7 +329,7 @@ body {
     border-radius: 10px;
 }
 .content-body-detail__code{
-    margin: -10px 1rem 10px 1rem;
+    margin: -10px 0rem 10px 0rem;
 }
 .deckgo-highlight-code-carbon{
     background-color: var(--background-code);

@@ -109,9 +109,6 @@ function showDataContent(value){
                 <deckgo-highlight-code language="${itemDetail.language}">
                     <code slot="code">
 `
-                    // itemDetail.code.forEach(itemCode => {
-                    //     template += `${itemCode}`
-                    // })
                     for(let i = 0; i < Object.keys(itemDetail.code).length; i++){
                         template += `${itemDetail.code[""+i+""]}
 `
@@ -119,10 +116,10 @@ function showDataContent(value){
                     template += `</code>
                 </deckgo-highlight-code>`
                 if(itemDetail.describeCode.length > 0){
-                    template += `<p class="content-body-detail__code--describe">${value.describeCode}</p>`
+                    template += `<p class="content-body-detail__code--describe">${itemDetail.describeCode}</p>`
                 }
                 if(itemDetail.attentionCode.length > 0){
-                    template += `<P class="content-body-detail__code--attention">Lưu ý: ${value.attentionCode}</P>`
+                    template += `<P class="content-body-detail__code--attention">Lưu ý: ${itemDetail.attentionCode}</P>`
                 }
                 
                 // <div class="cotent-body-detail__code--demo">
