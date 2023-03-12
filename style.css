@@ -326,7 +326,7 @@ body {
     border-radius: 10px;
 }
 .content-body-detail__code{
-    margin: -10px 1rem 0px 1rem;
+    margin: -10px 1rem 10px 1rem;
 }
 .deckgo-highlight-code-carbon{
     background-color: var(--background-code);
