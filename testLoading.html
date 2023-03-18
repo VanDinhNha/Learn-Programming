@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .loader{
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .loader::before{
+            content: "";
+            position: absolute;
+            margin: 0 auto;
+            font-weight: bold;
+            border-right: 2px solid rgba(0,245,245,.75);
+            font-size: 180%;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            transform: translateY(-50%);   
+            color: rgba(0,245,245,.75); 
+            animation: typewriter 10s steps(20) infinite normal both,
+                    blinkTextCursor 500ms steps(44) infinite normal;
+        }
+        @keyframes typewriter{
+            0%{
+                content: "loadding";
+                width: 0;
+            }
+            10%{
+                content: "loadding.";
+                width: 4em;
+            }
+            20%{
+                content: "loadding.";
+                width: 4em;
+            }
+            30%{
+                content: "loadding.";
+                width: 0;
+            }
+            40%{
+                content: "Loading...";
+                width: 0;
+            }
+            50%{
+                content: "Loading...";
+                width: 4em;
+            }
+            70%{
+                content: "Loading...";
+                width: 4em;
+            }
+            80%{
+                content: "Loading...";
+                width: 0;
+            }
+            100%{
+                content: "Loading...";
+                width: 0;
+            }
+        }
+        @keyframes blinkTextCursor{
+            from{border-right-color: rgba(0,245,245,.75);}
+            to{border-right-color: transparent;}
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <!--.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  margin: 0 auto;
+  font-weight: bold;
+  border-right: 2px solid rgba(0,245,245,.75);
+  font-size: 180%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+  color: rgba(0,245,245,.75);
+  animation: typewriter 16s steps(20) infinite normal both,
+            blinkTextCursor 700ms steps(44) infinite normal;
+}
+
+@keyframes typewriter {
+  0% {
+    content: "Loading ...";
+    width: 0;
+  }
+
+  10% {
+    content: "Loading ....";
+    width: 6em;
+  }
+
+  20% {
+    content: "Loading ....";
+    width: 6em;
+  }
+
+  30% {
+    content: "Loading ....";
+    width: 0;
+  }
+
+  40% {
+    content: "Wait a minute.";
+    width: 0;
+  }
+
+  50% {
+    content: "Wait a minute.";
+    width: 8em;
+  }
+
+  70% {
+    content: "Wait a minute.";
+    width: 8em;
+  }
+
+  80% {
+    content: "Wait a minute.";
+    width: 0;
+  }
+
+  100% {
+    content: "Wait a minute.";
+    width: 0;
+  }
+}
+
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: rgba(0,245,245,.75);
+  }
+
+  to {
+    border-right-color: transparent;
+  }
+}-->
+</body>
+</html>

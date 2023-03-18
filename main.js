@@ -107,8 +107,7 @@ function showDataContent(value){
                     <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ffffff" d="M768 832a128 128 0 0 1-128 128H192A128 128 0 0 1 64 832V384a128 128 0 0 1 128-128v64a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64h64z"></path><path fill="#ffffff" d="M384 128a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64V192a64 64 0 0 0-64-64H384zm0-64h448a128 128 0 0 1 128 128v448a128 128 0 0 1-128 128H384a128 128 0 0 1-128-128V192A128 128 0 0 1 384 64z"></path></g></svg>
                 </button>
                 <deckgo-highlight-code language="${itemDetail.language}">
-                    <code slot="code">
-`
+                    <code slot="code">`
                     for(let i = 0; i < Object.keys(itemDetail.code).length; i++){
                         template += `${itemDetail.code[""+i+""]}
 `
@@ -134,23 +133,25 @@ function showDataContent(value){
 }
 
 async function loadDataContent(id){
-    const arrID = id.id.split('-');
-    const response = await fetch(endpoint);
-    const menu_item = await response.json();
-    menu_item.forEach(item => {
-        if(item.basic.length > 0 && Array.isArray(item.basic)){
-            item.basic.forEach(itemContent => {
-                if(itemContent.id === arrID[0]){
-                    itemContent.content.forEach(itemValue => {
-                        if(itemValue.id === id.id){
-                            console.log(itemValue);
-                            showDataContent(itemValue);
-                        }
-                    })
-                }
-            })
-        }
-    });
+    if(Object.keys(id).length > 0){
+        const arrID = id.id.split('-');
+        const response = await fetch(endpoint);
+        const menu_item = await response.json();
+        menu_item.forEach(item => {
+            if(item.basic.length > 0 && Array.isArray(item.basic)){
+                item.basic.forEach(itemContent => {
+                    if(itemContent.id === arrID[0]){
+                        itemContent.content.forEach(itemValue => {
+                            if(itemValue.id === id.id){
+                                console.log(itemValue);
+                                showDataContent(itemValue);
+                            }
+                        })
+                    }
+                })
+            }
+        });
+    }
 }
 
 function getUrlVars(url) {
