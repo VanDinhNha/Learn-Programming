@@ -7,7 +7,8 @@ const content_body = document.querySelector(".content-body");
 const menu_list = document.querySelector("#menu_list");
 const url = location.href;
 
-const endpoint = "http://learn-programming-test.com/api/MENU";
+const endpointMenu = "http://learn-programming-test.com/api/MENU";
+const endpointContent = "http://learn-programming-test.com/api/CONTENT/";
 // const endpoint = "./data.json"
 
 const showMenuChild = (obj) => {
@@ -79,7 +80,7 @@ function showMenuData(icon = "", name = "", menu_child){
 }
 
 async function loadDataMenu(){
-    const response = await fetch(endpoint);
+    const response = await fetch(endpointMenu);
     const menu_item = await response.json();
     menu_item.forEach(item => {
         showMenuData(item.ICON, item.NAME, item.MENU_CHILD);
@@ -91,35 +92,32 @@ loadDataMenu();
 function showDataContent(value){
     let template = `<div class="content-body-title">
             <span class="content-body-title--text">
-                ${value.title}
+                ${value.TITLE}
             </span>
         </div>
-        <p class="content-body--describe">${value.describe}</p>
+        <p class="content-body--describe">${value.DESCRIBE}</p>
         `
-        if(value.attention.length > 0){
-            template += `<P class="content-body--attention">Lưu ý: ${value.attention}</P>`
-        }
-        if(value.detail.length > 0){
-            value.detail.forEach(itemDetail => {
+        // if(value.attention.length > 0){
+        //     template += `<P class="content-body--attention">Lưu ý: ${value.attention}</P>`
+        // }
+        if(value.CODE.length > 0){
+            value.CODE.forEach(itemDetail => {
                 template += `<div class="content-body-detail">
-            <label class="content-body-detail__title--text">${itemDetail.title}</label>
+            <label class="content-body-detail__title--text">${itemDetail.TITLE}</label>
             <div class="content-body-detail__code">
                 <button class="btn-copy" onclick="copy_code(this)">
                     <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ffffff" d="M768 832a128 128 0 0 1-128 128H192A128 128 0 0 1 64 832V384a128 128 0 0 1 128-128v64a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64h64z"></path><path fill="#ffffff" d="M384 128a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64V192a64 64 0 0 0-64-64H384zm0-64h448a128 128 0 0 1 128 128v448a128 128 0 0 1-128 128H384a128 128 0 0 1-128-128V192A128 128 0 0 1 384 64z"></path></g></svg>
                 </button>
-                <deckgo-highlight-code language="${itemDetail.language}">
-                    <code slot="code">`
-                    for(let i = 0; i < Object.keys(itemDetail.code).length; i++){
-                        template += `${itemDetail.code[""+i+""]}
-`
-                    }
-                    template += `</code>
+                <deckgo-highlight-code language="${itemDetail.LANGUAGE}">
+                    <code slot="code">
+${itemDetail.CODE}
+                    </code>
                 </deckgo-highlight-code>`
-                if(itemDetail.describeCode.length > 0){
-                    template += `<p class="content-body-detail__code--describe">${itemDetail.describeCode}</p>`
+                if(itemDetail.DESCRIBE !== null){
+                    template += `<p class="content-body-detail__code--describe">${itemDetail.DESCRIBE}</p>`
                 }
-                if(itemDetail.attentionCode.length > 0){
-                    template += `<P class="content-body-detail__code--attention">Lưu ý: ${itemDetail.attentionCode}</P>`
+                if(itemDetail.NOTE !== null){
+                    template += `<P class="content-body-detail__code--attention">Lưu ý: ${itemDetail.NOTE}</P>`
                 }
                 
                 // <div class="cotent-body-detail__code--demo">
@@ -135,23 +133,10 @@ function showDataContent(value){
 
 async function loadDataContent(id){
     if(Object.keys(id).length > 0){
-        const arrID = id.id.split('-');
-        const response = await fetch(endpoint);
-        const menu_item = await response.json();
-        menu_item.forEach(item => {
-            if(item.basic.length > 0 && Array.isArray(item.basic)){
-                item.basic.forEach(itemContent => {
-                    if(itemContent.id === arrID[0]){
-                        itemContent.content.forEach(itemValue => {
-                            if(itemValue.id === id.id){
-                                console.log(itemValue);
-                                showDataContent(itemValue);
-                            }
-                        })
-                    }
-                })
-            }
-        });
+        const response = await fetch(endpointContent + id.id);
+        const content_item = await response.json();
+        console.log(content_item);
+        showDataContent(content_item);
     }
 }
 
@@ -165,4 +150,4 @@ function getUrlVars(url) {
     }
 }
 
-//getUrlVars(url)
+getUrlVars(url)
