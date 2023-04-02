@@ -7,13 +7,17 @@ const content_body = document.querySelector(".content-body");
 const menu_list = document.querySelector("#menu_list");
 const url = location.href;
 
+const endpoint = "http://learn-programming-test.com/api/MENU";
+// const endpoint = "./data.json"
 
-//const endpoint = "https://vandinhnha.github.io/Code_Forntend/data.json";
-const endpoint = "./data.json"
-
-const showMenuChild = (opj) => {
-    if(opj.childNodes.length > 3)
-        opj.childNodes[3].classList.toggle("menu-item__child");
+const showMenuChild = (obj) => {
+    console.log(obj.childNodes[1].childNodes);
+    if(obj.childNodes.length > 3){
+        obj.childNodes[1].childNodes[1].classList.toggle("acctive__menu-item__parent--line")
+        obj.childNodes[3].classList.toggle("menu-item__child");
+        obj.childNodes[1].classList.toggle("acctive__menu-item__parent")
+        obj.childNodes[1].childNodes[7].classList.toggle("acctive__hover-test")
+    }
 };
 
 checkMenu.onclick = (e) => {
@@ -49,39 +53,36 @@ const copy_code = (opj) => {
     navigator.clipboard.writeText(opj.parentElement.childNodes[3].childNodes[1].textContent)
 }
 
-function showMenuData(icon = "", title = "", child = ""){
-    if(menu_list !== null){
-        let template_child = "";
-        if(child.length > 0 && Array.isArray(child)){
-            child.forEach(item =>{
-                template_child += `<a href="/?id=${item.id}" class="menu-item__link">
-                    ${item.title}
+function showMenuData(icon = "", name = "", menu_child){
+    let template_child = "";
+    if(menu_child !== null){
+        if(menu_child.length > 0 && Array.isArray(menu_child)){
+            menu_child.forEach(item =>{
+                template_child += `<a href="/?id=${item.ID_CONTENT}" class="menu-item__link">
+                    ${item.NAME}
                 </a>`;
             })
         }
-    
-        const template = `<li class="menu-item" onclick="showMenuChild(this)">
-            <div class="menu-item__parent">
-                ${icon}
-                <span class="menu-item__name">${title}</span>
-            </div>
-            <div class="menu-item__child">
-                ${template_child}
-            </div>
-        </li>`
-        menu_list.innerHTML += template;
     }
+    const template = `<li class="menu-item" onclick="showMenuChild(this)">
+    <div class="menu-item__parent">
+        <span class="menu-item__parent--line"></span>
+        ${icon}
+        <span class="menu-item__name">${name}</span>
+        <span class="hover-text" aria-hidden="true">${name}</span>
+    </div>
+    <div class="menu-item__child">
+        ${template_child}
+    </div>
+</li>`
+    menu_list.innerHTML += template; 
 }
 
 async function loadDataMenu(){
     const response = await fetch(endpoint);
     const menu_item = await response.json();
     menu_item.forEach(item => {
-        if(item.basic.length > 0 && Array.isArray(item.basic)){
-            item.basic.forEach(i => {
-                showMenuData(i.icon, i.title, i.content);
-            })
-        }
+        showMenuData(item.ICON, item.NAME, item.MENU_CHILD);
     });
 }
 
@@ -164,4 +165,4 @@ function getUrlVars(url) {
     }
 }
 
-getUrlVars(url)
+//getUrlVars(url)

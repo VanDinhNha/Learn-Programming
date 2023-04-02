@@ -151,7 +151,7 @@ body {
     transition: linear .5s;
     z-index: 1;
 }
-.menu-border-avatar{
+ .menu-border-avatar{
     margin: 40px;
     padding: 5px;
     border-radius: 50%;
@@ -174,57 +174,124 @@ body {
     -webkit-background-clip: text;
 }
 .menu-ul{
-    background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
-    -webkit-background-clip: text;
     margin-top: 10px;
     padding: 0 10px;
 }
 .menu-ul-li{
-    color: transparent;
     font-size: 20px;
+}
+.menu-ul-li__title{
+    background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 .menu-item{
     position: relative;
-    background-color: var(--background-dark);
     z-index: 1;
+
 }
 .menu-item__parent{
     display: flex;
+    align-items: center;
     margin: 5px;
-    color: var(--color-text);
     text-decoration: none;
-    background-color: transparent;
     position: relative;
     transition: linear .3s;
     z-index: 1;
     padding: 5px;
     cursor: pointer;
+    color: transparent;
+}
+.menu-item__parent--line{
+    position: absolute;
+    height: 1.7rem;
+    width: 2px;
+    background-color: var(--color-main1);
+    left: -2px;
+    transition: .5s;
+}
+.menu-item__parent:hover .menu-item__parent--line{
+    left: 200px;
+    background-color: var(--color-main2);
+}
+.menu-item__parent::before{
+    content: "";
+    position: absolute;
+    height: 1rem;
+    width: 2px;
+    background-color: var(--color-main1);
+    left: 2px;
+    top: 15px;
+    transition: .5s;
+    opacity: 0;
+    transform: rotate(0.5turn);
+}
+.menu-item__parent::after{
+    content: "";
+    position: absolute;
+    height: 1rem;
+    width: 2px;
+    background-color: var(--color-main1);
+    left: -2px;
+    top: 15px;
+    transition: .5s;
+    opacity: 0;
 }
 .menu-item__child{
     display: none;
     z-index: -1;
-    transition: linear .3s;
 }
-.menu-item__parent::before{
-    content: "";
-    /* background-color: var(--background-main); */
-    background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
-    width: 2px;
-    height: 100%;
+.menu-item__name{
+    margin-left: 5px;
+    color: var(--color-text);
+}
+.hover-text {
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: linear .3s;
-    border-radius: 0px 20px 20px 0px;
-}
-.menu-item__parent:hover{
-    color: var(--background-main);
-    transition: linear .3s;
+    color: transparent;
+    width: 0%;
+    left: 0px;
+    height: 1.5rem;
+    overflow: hidden;
+    transition: .5s;
+    background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
+    background-clip: text;
+    -webkit-background-clip: text;
+    padding-left: 30px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .menu-item__parent:hover::before{
-    width: 100%;
-    transition: linear .3s;
+    background-color: var(--color-main2);
+    left: 195px;
+}
+.menu-item__parent:hover::after{
+    background-color: var(--color-main2);
+    left: 205px;
+}
+.menu-item__parent:hover .hover-text {
+    width: 90%;
+}
+.acctive__hover-test{
+    width: 90%;
+}
+.acctive__menu-item__parent::before{
+    background-color: var(--color-main2);
+    left: 195px;
+    top: 17px;
+    transform: rotate(0.38turn);
+    opacity: 1;
+}
+.acctive__menu-item__parent::after{
+    background-color: var(--color-main2);
+    left: 205px;
+    top: 17px;
+    transform: rotate(0.12turn);
+    opacity: 1;
+}
+.acctive__menu-item__parent--line{
+    left: 200px;
+    background-color: var(--color-main2);
 }
 .menu-item__link{
     color: var(--color-text);
@@ -238,9 +305,6 @@ body {
     margin: 5px 0px 0px 10px;
     font-size: 15px;
 }
-.menu-item__name{
-    margin-left: 5px;
-}
 .menu-item__link::before{
     content: "";
     width: 2px;
@@ -251,15 +315,16 @@ body {
     left: 0;
     z-index: -1;
     transition: linear .3s;
-    /* border-radius: 0px 100% 100% 0px; */
+    border-radius: 5px;
 }
 .menu-item__link:hover{
     color: var(--color-text-active);
     transition: linear .3s;
 }
-.menu-link:hover::before{
+.menu-item__link:hover::before{
     width: 100%;
     transition: all .3s;
+    background-color: var(--color-text);
 }
 .mobile-menu-background{
     position: fixed;
