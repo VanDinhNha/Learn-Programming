@@ -326,6 +326,15 @@ body {
     transition: all .3s;
     background-color: var(--color-text);
 }
+.acctive__menu-item__link{
+    color: var(--color-text-active);
+    transition: linear .3s;
+}
+.acctive__menu-item__link::before{
+    width: 100%;
+    transition: all .3s;
+    background-color: var(--color-text);
+}
 .mobile-menu-background{
     position: fixed;
     inset: 0;
