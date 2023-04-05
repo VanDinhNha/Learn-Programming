@@ -9,7 +9,6 @@ const url = location.href;
 
 const endpointMenu = "http://learn-programming-test.com/api/MENU";
 const endpointContent = "http://learn-programming-test.com/api/CONTENT/";
-// const endpoint = "./data.json"
 
 const showMenuChild = (obj, obj_id = null) => {
     if(obj !== null){
@@ -39,7 +38,7 @@ const acctiveMenu = () => {
 
 function scrolledMenu(){
     if(!menu.classList.contains("toggle-menu")){
-        menu.scrollTop > 30 ? 
+        menu.scrollTop > 0 ? 
         icon_menu.setAttribute("style", `margin-top: -${menu.scrollTop}px`) : 
         icon_menu.removeAttribute("style")
     }
@@ -48,7 +47,7 @@ menu.addEventListener('scroll', scrolledMenu);
 
 function scrolledWindow(event){
     if(menu.classList.contains("toggle-menu")){
-        window.pageYOffset > 30 ? 
+        window.pageYOffset > 0 ? 
         icon_menu.setAttribute("style", `margin-top: -${window.pageYOffset}px`) : 
         icon_menu.removeAttribute("style")
     }
