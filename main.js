@@ -1,49 +1,6 @@
-const checkMenu = document.querySelector("#menu_checkbox");
-const menu = document.querySelector(".menu");
-const mobile_menu_background = document.querySelector(".mobile-menu-background");
-const icon_menu = document.querySelector(".icon-menu");
 const btn_copy = document.querySelector(".btn-copy");
 const content_body = document.querySelector(".content-body");
-const menu_list = document.querySelector("#menu_list");
 const url = location.href;
-
-const endpointMenu = "http://learn-programming-test.com/api/MENU";
-const endpointContent = "http://learn-programming-test.com/api/CONTENT/";
-
-const showMenuChild = (obj, obj_id = null) => {
-    if(obj !== null){
-        if(obj.childNodes.length > 3){
-            obj.childNodes[1].childNodes[1].classList.toggle("acctive__menu-item__parent--line")
-            obj.childNodes[3].classList.toggle("menu-item__child");
-            obj.childNodes[1].classList.toggle("acctive__menu-item__parent")
-            obj.childNodes[1].childNodes[7].classList.toggle("acctive__hover-test")
-            if(obj_id !== null){
-                const menuChild = document.getElementById(obj_id["id-menu"]+"_"+obj_id["id-content"]);
-                menuChild.classList.add("acctive__menu-item__link");
-            }
-        }
-    }
-};
-
-checkMenu.onclick = (e) => {
-    acctiveMenu();
-};
-
-const acctiveMenu = () => {
-    menu.classList.toggle("toggle-menu");
-    mobile_menu_background.hasAttribute("style") ?
-    mobile_menu_background.removeAttribute("style") :
-    mobile_menu_background.setAttribute("style", "display: block")
-}
-
-function scrolledMenu(){
-    if(!menu.classList.contains("toggle-menu")){
-        menu.scrollTop > 0 ? 
-        icon_menu.setAttribute("style", `margin-top: -${menu.scrollTop}px`) : 
-        icon_menu.removeAttribute("style")
-    }
-}
-menu.addEventListener('scroll', scrolledMenu);
 
 function scrolledWindow(event){
     if(menu.classList.contains("toggle-menu")){
@@ -84,7 +41,7 @@ function showMenuData(id = "", icon = "", name = "", menu_child){
 }
 
 async function loadDataMenu(){
-    const response = await fetch(endpointMenu);
+    const response = await fetch(urlMenu);
     const menu_item = await response.json();
     menu_item.forEach(item => {
         showMenuData(item.ID, item.ICON, item.NAME, item.MENU_CHILD);
@@ -102,6 +59,9 @@ function showDataContent(value, obj_id){
         </div>
         <p class="content-body--describe">${value.DESCRIBE}</p>
         `
+    if(value.IMAGE !== null){
+        template += `<img src="/image/${value.IMAGE}" alt="image" class="content-body--image"/>`
+    }
     if(value.NOTE !== null){
         template += `<P class="content-body--attention">Lưu ý: ${value.NOTE}</P>`
     }
@@ -119,6 +79,9 @@ function showDataContent(value, obj_id){
             if(itemDetail.DESCRIBE !== null){
                 template += `<p class="content-body-detail__code--describe">${itemDetail.DESCRIBE}</p>`
             }
+            // if(itemDetail.IMAGE !== null){
+            //     template += `<img src="/image/${itemDetail.IMAGE}" alt="image" class="content-body-detail__image"/>`
+            // }
             if(itemDetail.NOTE !== null){
                 template += `<P class="content-body-detail__code--attention">Lưu ý: ${itemDetail.NOTE}</P>`
             }
@@ -137,8 +100,9 @@ function showDataContent(value, obj_id){
 
 async function loadDataContent(id){
     if(Object.keys(id).length > 0){
-        const response = await fetch(endpointContent + id["id-content"]);
+        const response = await fetch(urlContent + id["id-content"]);
         const content_item = await response.json();
+        console.log(content_item);
         showDataContent(content_item, id);
     }
     Loading.removeAttribute("style");
@@ -150,7 +114,7 @@ function getUrlVars(url) {
         const parts = url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
             vars[key] = value;
         });
-        loadDataContent(vars).catch(handleError);;
+        loadDataContent(vars).catch(handleError);
     }
 }
 

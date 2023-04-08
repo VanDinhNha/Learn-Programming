@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>admin</title>
-    <link rel="stylesheet" href="./../style_layout.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Sửa Menu</title>
+    <link rel="stylesheet" href="./../../style_layout.css">
+    <link rel="stylesheet" href="./style-add-menu.css">
 </head>
 <body>
     <div class="wrapper">
@@ -21,7 +21,7 @@
             </label>
             <div class="menu toggle-menu">
                 <div class="menu-border-avatar">
-                    <img src="./../image/avatar.jpg" alt="avatar" class="avatar">
+                    <img src="./../../image/avatar.jpg" alt="avatar" class="avatar">
                 </div>
                 <a href="/" class="name">Văn Đình Nhã</a>
                 <ul class="menu-ul">
@@ -38,7 +38,7 @@
                                     <a href="./menu/add-menu.html" class="menu-item__link">
                                         Thêm Menu
                                     </a>
-                                    <a href="./content/add-content.html" class="menu-item__link">
+                                    <a href="/" class="menu-item__link">
                                         Thêm Nội Dung
                                     </a>
                                 </div>
@@ -73,8 +73,28 @@
                     </form>
                 </nav>
                 <div class="content-body">
-                    
-                    
+                    <form id="form_edit_menu" method="put">
+                        <div class="content-layout">
+                            <div class="layout-item">
+                                <label class="color-text" for="name">Tên Menu</label>
+                                <input class="form-control" autocomplete="off" type="text" name="name" id="name">                           
+                            </div>
+                            <div class="layout-item">
+                                <label class="color-text" for="rank">Thứ Tự</label>
+                                <input class="form-control" autocomplete="off" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="rank" id="rank">                           
+                            </div>
+                            <div class="layout-item">
+                                <label class="color-text" for="icon">Icon</label>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="<svg> ... </svg>" autocomplete="off" oninput="reviewIcon(this)" type="text" name="icon" id="icon">
+                                    <div class="review-icon"></div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="center-btn">
+                            <button class="btn bg-blue" type="submit">Lưu</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -85,7 +105,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="modal-title"></span>
-                    <button class="btn bg-transparent">
+                    <button onclick="closeModal();" class="btn bg-transparent">
                         <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"></path></g></svg>
                     </button>
                 </div>
@@ -97,15 +117,15 @@
             </div>
         </div>
     </div>
-    <script src="./../script_layout.js"></script>
-    <script src="./main.js"></script>
+    <script src="./../../script_layout.js"></script>
+    <script src="./main-edit-menu.js"></script>
     <script>
         const Loading = document.querySelector(".loading");
-        window.onload = function()
-       {
-           const Loading = document.querySelector(".loading");
-           Loading.removeAttribute("style");
-       };
+    //     window.onload = function()
+    //    {
+    //        const Loading = document.querySelector(".loading");
+    //        Loading.removeAttribute("style");
+    //    };
    </script>
 </body>
 </html>
