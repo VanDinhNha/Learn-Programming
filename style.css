@@ -1,68 +1,18 @@
 
-/*content*/
-.content{
-    width: calc(100% - 250px);
-    min-height: 100vh;
-    background-color: var(--background-main);
-    margin-left: auto;
-    transition: linear .3s;
-}
-.content-header{
-    background-color: var(--background-dark);
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-}
-.search-box {
-    width: 50%;
-    margin-top: -17px;
-    padding: 10px;
-}
-.form-control{
-    display: block;
-    width: 100%;
-    padding: 0.5rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--color-text);
-    background-color: var(--background-main);
-    background-clip: padding-box;
-    border: 0px solid #ced4da;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-.icon-search{
-    position: relative;
-    top: 30px;
-    left: 10px;
-}
-input[type=search] {
-    color: var(--color-text);
-    padding-left: 40px;
-}
 
-input[type=search]:focus {
-    padding-left: 40px;
-    outline: none;
-    color: var(--color-text);
-}
 /* content */
 .content-body{
     max-width: 980px;
-    margin: 0 auto;
+    margin: 4rem auto 1rem auto;
     transition: linear .3s;
     background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
     -webkit-background-clip: text;
 }
-.content-body-title{
+.content-body-name{
     text-align: center;
     margin: 20px 0px;
 }
-.content-body-title::after{
+.content-body-name::after{
     content: "";
     display: block;
     width: 50%;
@@ -71,7 +21,7 @@ input[type=search]:focus {
     background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
     transition: linear .3s;
 }
-.content-body-title--text{
+.content-body-name--text{
     font-size: 60px;
     color: transparent;
 }
@@ -83,19 +33,32 @@ input[type=search]:focus {
     margin: 10px;
     font-size: 24px;
 }
-.content-body--describe{
+.content-body--title{
+    font-size: 2rem;
+    color: transparent;
+    margin: 1rem 0;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.content-body--describe, .content-body-detail__code--describe{
     font-size: 1.2rem;
     color: transparent;
     margin: 1rem 0;
     line-height: 2rem;
     padding: 0 10px;
+    text-indent: 50px;
 }
-.content-body--image{
+.content-body--image, .content-body-detail__image{
     width: 90%;
-    margin: 0 auto 2rem auto;
+    margin: 1rem auto .5rem auto;
     border-radius: 10px
 }
-.content-body--attention{
+.content-body--describe-image, .content-body-detail--describe-image{
+    text-align: center;
+    color: transparent;
+    font-size: 12px;
+}
+.content-body--attention, .content-body-detail__code--attention{
     font-size: 1rem;
     color: transparent;
     margin: 1rem;
@@ -133,18 +96,14 @@ input[type=search]:focus {
 .btn-copy:active{
     top: 20px
 }
-.content-body-detail__code--describe{
+/* .content-body-detail__code--describe{
     font-size: 1.2rem;
     color: transparent;
     margin: 1rem 0px;
     line-height: 2rem;
     padding: 0px 10px;
-}
-/* .content-body-detail__image{
-    width: 80%;
-
 } */
-.content-body-detail__code--attention{
+/* .content-body-detail__code--attention{
     font-size: 1rem;
     color: transparent;
     margin: 1rem;
@@ -153,7 +112,7 @@ input[type=search]:focus {
     font-style: italic;
     border-left: solid 0.5rem var(--color-main1);
     box-shadow: 0px 0px 10px var(--background-dark)
-}
+} */
 .cotent-body-detail__code--demo{
     min-height: 100px;
     width: 100%;
@@ -176,23 +135,13 @@ input[type=search]:focus {
 
 /*ui tablet*/
 @media (min-width: 768px) and (max-width: 991px) {
-    .menu{
-        box-shadow: 0 0;
-    }
     .content-body{
-        margin-top: 30px;
         transition: linear .3s;
-    }
-    .icon-menu{
-        z-index: 2;
-    }
-    .toggle-menu{
-        margin-left: -250px;
     }
     .content{
         width: 100%;
     }
-    .content-body-title::after{
+    .content-body-name::after{
         width: 70%;
     }
     .btn-copy{
@@ -202,40 +151,18 @@ input[type=search]:focus {
 
 /*ui mobile*/
 @media (max-width: 767px) {
-    .menu{
-        box-shadow: 0 0;
-    }
     .content-body{
-        margin-top: 30px;
         transition: linear .3s;
     }
-    .icon-menu{
-        z-index: 2;
-    }
-    .toggle-menu{
-        margin-left: -250px;
-    }
-    .content{
-        width: 100%;
-    }
-    .search-box{
-        width: 100%;
-        margin-left: 60px;
-    }
-    .content-header{
-        justify-content: end;
-    }
-    .content-body-title::after{
+    .content-body-name::after{
         width: 90%;
     }
-    .content-body-title--text{
+    .content-body-name--text{
         font-size: 40px;
         transition: linear .3s;
     }
     .btn-copy{
         opacity: 1;
-    }
-    .btn-copy{
         left: 90%;
         transition: linear 2s;
     }

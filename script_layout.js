@@ -5,6 +5,7 @@ const icon_menu = document.querySelector(".icon-menu");
 const menu_list = document.querySelector("#menu_list");
 
 const urlRankMenu = "http://learn-programming-test.com/api/RANK";
+const urlRankMenuChild = "http://learn-programming-test.com/api/RANK/";
 const urlMenu = "http://learn-programming-test.com/api/MENU/";
 const urlMenuLocal = "https://localhost:44358/api/MENU/";
 const urlContent = "http://learn-programming-test.com/api/CONTENT/";
@@ -44,14 +45,14 @@ function scrolledMenu(){
 }
 menu.addEventListener('scroll', scrolledMenu);
 
-function scrolledWindow(event){
-    if(menu.classList.contains("toggle-menu")){
-        window.pageYOffset > 0 ? 
-        icon_menu.setAttribute("style", `margin-top: -${window.pageYOffset}px`) : 
-        icon_menu.removeAttribute("style")
-    }
-}
-window.addEventListener('scroll', scrolledWindow);
+// function scrolledWindow(event){
+//     if(menu.classList.contains("toggle-menu")){
+//         window.pageYOffset > 0 ? 
+//         icon_menu.setAttribute("style", `margin-top: -${window.pageYOffset}px`) : 
+//         icon_menu.removeAttribute("style")
+//     }
+// }
+// window.addEventListener('scroll', scrolledWindow);
 
 function handleError(err){
     window.location="/error.html";

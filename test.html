@@ -1,310 +1,144 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 
+<!DOCTYPE html>
+<html lang="en"> 
 <head>
-	<title>IIS 10.0 Detailed Error - 405.0 - Method Not Allowed</title>
-	<style type="text/css">
-		<!-- 
-		body {
-			margin: 0;
-			font-size: .7em;
-			font-family: Verdana, Arial, Helvetica, sans-serif;
-		}
-
-		code {
-			margin: 0;
-			color: #006600;
-			font-size: 1.1em;
-			font-weight: bold;
-		}
-
-		.config_source code {
-			font-size: .8em;
-			color: #000000;
-		}
-
-		pre {
-			margin: 0;
-			font-size: 1.4em;
-			word-wrap: break-word;
-		}
-
-		ul,
-		ol {
-			margin: 10px 0 10px 5px;
-		}
-
-		ul.first,
-		ol.first {
-			margin-top: 5px;
-		}
-
-		fieldset {
-			padding: 0 15px 10px 15px;
-			word-break: break-all;
-		}
-
-		.summary-container fieldset {
-			padding-bottom: 5px;
-			margin-top: 4px;
-		}
-
-		legend.no-expand-all {
-			padding: 2px 15px 4px 10px;
-			margin: 0 0 0 -12px;
-		}
-
-		legend {
-			color: #333333;
-			;
-			margin: 4px 0 8px -12px;
-			_margin-top: 0px;
-			font-weight: bold;
-			font-size: 1em;
-		}
-
-		a:link,
-		a:visited {
-			color: #007EFF;
-			font-weight: bold;
-		}
-
-		a:hover {
-			text-decoration: none;
-		}
-
-		h1 {
-			font-size: 2.4em;
-			margin: 0;
-			color: #FFF;
-		}
-
-		h2 {
-			font-size: 1.7em;
-			margin: 0;
-			color: #CC0000;
-		}
-
-		h3 {
-			font-size: 1.4em;
-			margin: 10px 0 0 0;
-			color: #CC0000;
-		}
-
-		h4 {
-			font-size: 1.2em;
-			margin: 10px 0 5px 0;
-		}
-
-		#header {
-			width: 96%;
-			margin: 0 0 0 0;
-			padding: 6px 2% 6px 2%;
-			font-family: "trebuchet MS", Verdana, sans-serif;
-			color: #FFF;
-			background-color: #5C87B2;
-		}
-
-		#content {
-			margin: 0 0 0 2%;
-			position: relative;
-		}
-
-		.summary-container,
-		.content-container {
-			background: #FFF;
-			width: 96%;
-			margin-top: 8px;
-			padding: 10px;
-			position: relative;
-		}
-
-		.content-container p {
-			margin: 0 0 10px 0;
-		}
-
-		#details-left {
-			width: 35%;
-			float: left;
-			margin-right: 2%;
-		}
-
-		#details-right {
-			width: 63%;
-			float: left;
-			overflow: hidden;
-		}
-
-		#server_version {
-			width: 96%;
-			_height: 1px;
-			min-height: 1px;
-			margin: 0 0 5px 0;
-			padding: 11px 2% 8px 2%;
-			color: #FFFFFF;
-			background-color: #5A7FA5;
-			border-bottom: 1px solid #C1CFDD;
-			border-top: 1px solid #4A6C8E;
-			font-weight: normal;
-			font-size: 1em;
-			color: #FFF;
-			text-align: right;
-		}
-
-		#server_version p {
-			margin: 5px 0;
-		}
-
-		table {
-			margin: 4px 0 4px 0;
-			width: 100%;
-			border: none;
-		}
-
-		td,
-		th {
-			vertical-align: top;
-			padding: 3px 0;
-			text-align: left;
-			font-weight: normal;
-			border: none;
-		}
-
-		th {
-			width: 30%;
-			text-align: right;
-			padding-right: 2%;
-			font-weight: bold;
-		}
-
-		thead th {
-			background-color: #ebebeb;
-			width: 25%;
-		}
-
-		#details-right th {
-			width: 20%;
-		}
-
-		table tr.alt td,
-		table tr.alt th {}
-
-		.highlight-code {
-			color: #CC0000;
-			font-weight: bold;
-			font-style: italic;
-		}
-
-		.clear {
-			clear: both;
-		}
-
-		.preferred {
-			padding: 0 5px 2px 5px;
-			font-weight: normal;
-			background: #006633;
-			color: #FFF;
-			font-size: .8em;
-		}
-	</style>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Văn Đình Nhã</title>
+    <link rel="stylesheet" href="style_layout.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
 </head>
-
 <body>
-	<div id="content">
-		<div class="content-container">
-			<h3>HTTP Error 405.0 - Method Not Allowed</h3>
-			<h4>The page you are looking for cannot be displayed because an invalid method (HTTP verb) is being used.
-			</h4>
-		</div>
-		<div class="content-container">
-			<fieldset>
-				<h4>Most likely causes:</h4>
-				<ul>
-					<li>The request sent to the Web server used an HTTP verb that is not allowed by the module
-						configured to handle the request.</li>
-					<li>A request was sent to the server that contained an invalid HTTP verb.</li>
-					<li>The request is for static content and contains an HTTP verb other than GET or HEAD.</li>
-					<li>A request was sent to a virtual directory using the HTTP verb POST and the default document is a
-						static file that does not support HTTP verbs other than GET or HEAD.</li>
-				</ul>
-			</fieldset>
-		</div>
-		<div class="content-container">
-			<fieldset>
-				<h4>Things you can try:</h4>
-				<ul>
-					<li>Verify the list of verbs enabled for the module handler this request was sent to, and ensure
-						that this verb should be allowed for the Web site.</li>
-					<li>Check the IIS log file to see which verb is not allowed for the request.</li>
-					<li>Create a tracing rule to track failed requests for this HTTP status code. For more information
-						about creating a tracing rule for failed requests, click <a
-							href="http://go.microsoft.com/fwlink/?LinkID=66439">here</a>. </li>
-				</ul>
-			</fieldset>
-		</div>
-
-		<div class="content-container">
-			<fieldset>
-				<h4>Detailed Error Information:</h4>
-				<div id="details-left">
-					<table border="0" cellpadding="0" cellspacing="0">
-						<tr class="alt">
-							<th>Module</th>
-							<td>&nbsp;&nbsp;&nbsp;WebDAVModule</td>
-						</tr>
-						<tr>
-							<th>Notification</th>
-							<td>&nbsp;&nbsp;&nbsp;MapRequestHandler</td>
-						</tr>
-						<tr class="alt">
-							<th>Handler</th>
-							<td>&nbsp;&nbsp;&nbsp;WebDAV</td>
-						</tr>
-						<tr>
-							<th>Error Code</th>
-							<td>&nbsp;&nbsp;&nbsp;0x00000000</td>
-						</tr>
-
-					</table>
-				</div>
-				<div id="details-right">
-					<table border="0" cellpadding="0" cellspacing="0">
-						<tr class="alt">
-							<th>Requested URL</th>
-							<td>&nbsp;&nbsp;&nbsp;http://learn-programming-test.com:80/api/MENU/25</td>
-						</tr>
-						<tr>
-							<th>Physical Path</th>
-							<td>&nbsp;&nbsp;&nbsp;D:\LapTrinh\Code_Backend\API_Learn_Programming\API_Learn_Programming\api\MENU\25
-							</td>
-						</tr>
-						<tr class="alt">
-							<th>Logon Method</th>
-							<td>&nbsp;&nbsp;&nbsp;Anonymous</td>
-						</tr>
-						<tr>
-							<th>Logon User</th>
-							<td>&nbsp;&nbsp;&nbsp;Anonymous</td>
-						</tr>
-
-					</table>
-					<div class="clear"></div>
-				</div>
-			</fieldset>
-		</div>
-
-		<div class="content-container">
-			<fieldset>
-				<h4>More Information:</h4>
-				This error means that the request sent to the Web server contained an HTTP verb that is not allowed by
-				the configured module handler for the request.
-				<p><a href="https://go.microsoft.com/fwlink/?LinkID=62293&amp;IIS70Error=405,0,0x00000000,18362">View
-						more information &raquo;</a></p>
-
-			</fieldset>
-		</div>
-	</div>
+    <div class="wrapper">
+        <div class="loading" style="display: flex;">
+        </div>
+        <div class="body">
+            <input type="checkbox" id="menu_checkbox">
+            <label class="icon-menu" for="menu_checkbox">
+                <div></div>
+                <div></div>
+                <div></div>
+            </label>
+            <div class="menu toggle-menu">
+                <div class="menu-border-avatar">
+                    <img src="./image/avatar.jpg" alt="avatar" class="avatar">
+                </div>
+                <a href="/" class="name">Văn Đình Nhã</a>
+                <ul class="menu-ul">
+                    <li class="menu-ul-li">
+                        <span style="color: #fff;">
+                            Forntend Căn Bản
+                        </span>
+                        <ul id="menu_list"></ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="mobile-menu-background">             
+            </div>
+            <div class="content">
+                <nav class="content-header">
+                    <form class="search-box">
+                        <svg class="icon-search" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#4e4d4d"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Search_Magnifying_Glass"> <path id="Vector" d="M15 15L21 21M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17Z" stroke="#<svg viewBox=" 0="" 24="" 24"="" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Search_Magnifying_Glass"> <path id="Vector" d="M15 15L21 21M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g>" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;</path> </g> </g></svg>
+                        <input class="search-input" type="search" placeholder="Search">
+                    </form>
+                </nav>
+                <div class="content-body">
+                    <div class="content-body-name">
+                        <span class="content-body-name--text">
+                            Giới Thiệu
+                        </span>
+                    </div>
+                    <p class="content-body--describe">
+                        Chào mọi người mình là Văn Đình Nhã, mình đã có làm qua Backend .Net được một năm,
+                        hiện mình đang học thêm Forntend với mục tiêu sẽ trở thành một web developer.
+                        Nguyên nhân mình làm trang web này là trong lúc mình học thì mình nhận thấy là
+                        có những câu lệnh mình học qua và hiểu được nhưng do không dùng nhiều thì đôi lúc lại quên
+                        , có thể là quên câu lệnh viết ra sao, cấu trúc câu gồm những gì hoặc tệ hơn là không nhớ
+                        câu lệnh đó luôn. Những lúc như vậy mình lại lục lại những bài học, những video đã coi,
+                        những ghi chép trong lúc học hoặc lênh mạng search. Những lúc như vậy rất mất thời gian,
+                        mình biết chỉ có làm nhiều mới nhớ lâu được nhưng mình thì mới học và không phải lệnh nào 
+                        cũng dùng thường xuyên để nhớ hết và mình cũng muốn có một nơi lưu trữ code theo ý mình 
+                        để lưu những dòng code mà sau này mình có thể dùng lại hoặc những dòng code mình tìm đươc 
+                        trên mạng mà chưa dùng tới hoặc đơn giản là lưu code, chức năng và giải thích để có quên 
+                        vô tìm lại cho nhanh, Nhưng quan trọng hơn hết là vừa làm vừa học cho để hiểu dễ nhớ và 
+                        còn nhiều những lý do khác nữa. Vì trang này mình vừa làm vừa học nên chỉ mới có giao diện 
+                        chứ ko có database gì hết, mình chỉ tự viết chay một cái json để hiển thị nhiều thông tin 
+                        khỏi phải code nhiều trang thôi. Sau này mình có thể sẽ phát triển web để có database đàng 
+                        hoàng. Cảm ơn mọi người đã đọc tới đây, vì đang vừa học vừa làm nên code còn rất chuối mọi 
+                        người thông cảm và nếu lối hành văn có lũng cũng sai chính tả hay chấm phẩy không đúng mọi 
+                        người bỏ qua. Nếu có bất kỳ góp ý nào để mình phát triển web tốt hơn hoặc giúp mình có thêm 
+                        chút kiến thức thì có thể liên hệ qua telegram, facebook. Cảm ơn mọi người đã đọc tới đây. 
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+    <div class="bg-modal">
+        <div class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title"></span>
+                    <button onclick="closeModal();" class="btn bg-transparent">
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"></path></g></svg>
+                    </button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button class="btn bg-dark">Hủy</button>
+                    <button class="btn bg-blue">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script> -->
+    <script src="./script_layout.js"></script>
+    <script src="./main.js"></script>
+    <script type="module" src="https://unpkg.com/@deckdeckgo/highlight-code@latest/dist/deckdeckgo-highlight-code/deckdeckgo-highlight-code.esm.js"></script>
+    <script>
+        const Loading = document.querySelector(".loading");
+   </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 </body>
-
 </html>
