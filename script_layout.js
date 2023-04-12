@@ -9,6 +9,7 @@ const urlRankMenuChild = "http://learn-programming-test.com/api/RANK/";
 const urlMenu = "http://learn-programming-test.com/api/MENU/";
 const urlMenuLocal = "https://localhost:44358/api/MENU/";
 const urlContent = "http://learn-programming-test.com/api/CONTENT/";
+const urlContentLocal = "https://localhost:44358/api/CONTENT/";
 
 const showMenuChild = (obj, obj_id = null) => {
     if(obj !== null){
@@ -73,5 +74,14 @@ function showModal(id, title, content){
 function closeModal(){
     const modal = document.querySelector(".bg-modal");
     modal.removeAttribute("style");
+}
+
+function showLoading(){
+    const loading = document.querySelector(".loading");
+    loading.setAttribute("style", "display: flex;");
+}
+function closeLoading(){
+    const loading = document.querySelector(".loading");
+    loading.removeAttribute("style");
 }
 

@@ -54,7 +54,7 @@ function showDataContent(value, obj_id){
         //<label class="content-body--title">${value.TITLE}</label>
     if(value.IMAGES.length > 0){
         value.IMAGES.forEach(image =>{
-            template += `<img src="/image/${image.NAME}" alt="image" class="content-body--image"/>
+            template += `<img src="/image/${image.IMAGE}" alt="image" class="content-body--image"/>
             <p class="content-body--describe-image">${image.DESCRIBE}</p>`
         })
     }
