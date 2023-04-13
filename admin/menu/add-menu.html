@@ -76,6 +76,12 @@
                     <form id="form_add_menu" method="post">
                         <div class="layout">
                             <div class="layout-item">
+                                <label class="color-text" for="menu_main">Phân Loại Menu</label>
+                                <select id="classify" onchange="getAllRankMenu(this.value)">
+                                    <option value="NONE">Chọn ...</option>
+                                </select>
+                            </div>
+                            <div class="layout-item">
                                 <label class="color-text" for="name">Tên Menu</label>
                                 <input class="form-control" autocomplete="off" type="text" name="name" id="name">                           
                             </div>

@@ -2,17 +2,31 @@ const form = document.querySelector("#form_add_menu");
 const rankChek = document.querySelector("#rank");
 const iconReview = document.querySelector("#icon");
 const review_icon = document.querySelector(".review-icon");
+const list_classify = document.querySelector("#classify");
 let arrRank = [];
 
-async function getAllRank(){
-    const response = await fetch(urlRankMenu);
-    arrRank = await response.json();
-    Loading.removeAttribute("style");
+getAllClassify().catch(handleError);
+
+async function getAllClassify(){
+    const response = await fetch(urlClassify);
+    const classify_item = await response.json();
+    classify_item.forEach(item => {
+        list_classify.innerHTML += `<option value="${item.ID}">${item.NAME}</option>`
+    });
+    closeLoading();
+    //getAllRank().catch(handleError);
 }
 
-getAllRank().catch(handleError);
+async function getAllRankMenu(value){
+    const response = await fetch(urlRankMenu + value);
+    arrRank = await response.json();
+}
 
-async function addMenu(name, rank, icon){
+async function addMenu(classify, name, rank, icon){
+    if(classify === "NONE"){
+        alert('chưa chọn phân loại menu')
+        return;
+    }
     if(name === ""){
         alert('chưa nhập tên');
         return;
@@ -26,18 +40,20 @@ async function addMenu(name, rank, icon){
         return;
     }
     Loading.setAttribute("style", "display: flex;");
-    const respomse = await fetch(urlMenu,{
+    const respomse = await fetch(urlMenuLocal,{
         method: "POST",
         body: JSON.stringify({
-            "NAME": name, "RANK": rank, "ICON": icon,
+            "ID_CLASSIFY_MENU": classify, "NAME": name, "RANK": rank, "ICON": icon,
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8",
         },
     });
-    //console.log(response);
     Loading.removeAttribute("style");
-    respomse.status === 200 ? alert('thêm thành công') : alert('thêm thất bại')
+    //cần sửa ko reload và tìm cách nhận message từ server
+    respomse.status === 200 ? 
+        alert('thêm thành công') & location.reload() : 
+        alert('thêm thất bại')
 }
 rankChek.addEventListener("keyup", debounceFn(function (e) {
     arrRank.includes(Number(rankChek.value)) ? 
@@ -70,5 +86,6 @@ form.addEventListener("submit", function (e) {
     const name = this.elements["name"].value;
     const rank = this.elements["rank"].value;
     const icon = this.elements["icon"].value;
-    addMenu(name, rank, icon);
+    const classify = this.elements["classify"].value;
+    addMenu(classify, name, rank, icon);
 })

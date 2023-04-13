@@ -1,4 +1,5 @@
 const menu_main= document.querySelector("#menu_main");
+const classify_menu= document.querySelector("#classify_menu");
 const rankChek = document.querySelector("#rank_menu_child");
 const file_upload = document.querySelector(".file-upload");
 const title_file_upload = document.querySelector(".title-file-upload");
@@ -11,6 +12,7 @@ let count_img = 0;
 let count_detail = 0;
 let count_detail_img = 0;
 let arrRank = [];
+let arrMenu = {};
 let fileImage = {};
 let fileImageDetail = {};
 let objDetail = {};
@@ -45,16 +47,25 @@ function debounceFn(func, wait, immediate) {
     };
 }
 
-async function loadDataMenu(){
+async function loadDatacLassifyMenu(){
     const response = await fetch(urlMenu);
     const menu_item = await response.json();
     menu_item.forEach(item => {
-        menu_main.innerHTML += `<option value="${item.ID}">${item.NAME}</option>`
+        arrMenu[item.ID] = item.MENU;
+        classify_menu.innerHTML += `<option value="${item.ID}">${item.NAME}</option>`;
     });
     closeLoading();
 }
 
-loadDataMenu().catch(handleError);
+loadDatacLassifyMenu().catch(handleError);
+
+function loadDataMenu(id){
+    menu_main.innerHTML = '<option value="NONE">Chọn ...</option>';
+    arrMenu[id].forEach(item => {
+        menu_main.innerHTML += `<option value="${item.ID}">${item.NAME}</option>`
+    });
+    closeLoading();
+}
 
 file_upload.addEventListener('dragover', (event) => {
     event.preventDefault();
@@ -102,7 +113,8 @@ function show_file_upload(Image){
             const imageBase64 = reader.result;
             fileImage[count_img] = {
                 ["IMAGE"]: imageBase64,
-                ["DESCRIBE"]: null
+                ["DESCRIBE"]: null,
+                ["TYPE"]: Image.type
             }
             const template = `<div class="item-image">
                 <img class="image" src="${imageBase64}" alt="image">
@@ -207,7 +219,7 @@ function add_detail(){
         "CODE": null,
         "DESCRIBE": null,
         "NOTE": null,
-        "IMAGES": {}
+        "IMAGE_DATA": {}
     }
     count_detail++;
 }
@@ -252,9 +264,10 @@ function show_file_upload_detail(obj, Image, count_detail){
         const reader = new FileReader();
         reader.onload = (event) => {
             const imageBase64 = reader.result;
-            objDetail[count_detail]["IMAGES"][count_detail_img] = {
-                "IMAGE": imageBase64,
-                "DESCRIBE": null
+            objDetail[count_detail]["IMAGE_DATA"][count_detail_img] = {
+                ["IMAGE"]: imageBase64,
+                ["DESCRIBE"]: null,
+                ["TYPE"]: Image.type
             }
             const template = `<div class="item-image">
                 <img class="image" src="${imageBase64}" alt="image">
@@ -291,26 +304,48 @@ function remove_detail(obj, count_detail){
 }
 
 function describe_image_detail(value, count_detail, count_detail_img){
-    objDetail[count_detail]["IMAGES"][count_detail_img]["DESCRIBE"] = value;
+    objDetail[count_detail]["IMAGE_DATA"][count_detail_img]["DESCRIBE"] = value;
 }
 
 function remove_image_detail(obj, count_detail, count_detail_img){
     if(count_detail !== undefined && count_detail_img !== undefined)
-        delete objDetail[count_detail]["IMAGES"][count_detail_img];
+        delete objDetail[count_detail]["IMAGE_DATA"][count_detail_img];
     obj.parentNode.remove();
 }
-
+//nhận message from web api
 async function save(){
     const ID_MENU = document.querySelector("#menu_main").value;
+    const ID_CLASSIFY = document.querySelector("#classify_menu").value;
     const NAME = document.querySelector("#name_menu_child").value;
     const RANK = document.querySelector("#rank_menu_child").value;
     const DESCRIBE = document.querySelector("#describe").value;
     const NOTE = document.querySelector("#note").value;
+    if(ID_CLASSIFY === "NONE"){
+        alert('chưa chọn phân loại menu')
+        return;
+    }
+    if(ID_MENU === "NONE"){
+        alert('chưa chọn menu');
+        return;
+    }
+    if(NAME === ""){
+        alert('chưa nhập tên menu con');
+        return;
+    }
+    if(RANK === ""){
+        alert('chưa nhập tên thứ tự');
+        return;
+    }
+    if(arrRank.includes(Number(rankChek.value))){
+        alert('số thứ tự đã tồn tại');
+        return;
+    }
     showLoading();
     const respomse = await fetch(urlContentLocal,{
         method: "POST",
         body: JSON.stringify({
             "ID_MENU": ID_MENU,
+            "RANK": RANK,
             "NAME": NAME, 
             "DESCRIBE": DESCRIBE, 
             "NOTE": NOTE, 
@@ -322,5 +357,6 @@ async function save(){
         },
     });
     closeLoading()
+    console.log(respomse);
     respomse.status === 200 ? alert('thêm thành công') : alert('thêm thất bại')
 }

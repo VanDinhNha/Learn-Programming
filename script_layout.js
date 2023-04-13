@@ -2,14 +2,15 @@ const checkMenu = document.querySelector("#menu_checkbox");
 const menu = document.querySelector(".menu");
 const mobile_menu_background = document.querySelector(".mobile-menu-background");
 const icon_menu = document.querySelector(".icon-menu");
-const menu_list = document.querySelector("#menu_list");
+const menu_ul_li = document.querySelector(".menu-ul-li");
 
-const urlRankMenu = "http://learn-programming-test.com/api/RANK";
-const urlRankMenuChild = "http://learn-programming-test.com/api/RANK/";
+const urlRankMenu = "http://learn-programming-test.com/api/RANK_MENU/";
+const urlRankMenuChild = "http://learn-programming-test.com/api/RANK_MENU_CHILD/";
 const urlMenu = "http://learn-programming-test.com/api/MENU/";
 const urlMenuLocal = "https://localhost:44358/api/MENU/";
 const urlContent = "http://learn-programming-test.com/api/CONTENT/";
 const urlContentLocal = "https://localhost:44358/api/CONTENT/";
+const urlClassify = "http://learn-programming-test.com/api/CLASSIFY/";
 
 const showMenuChild = (obj, obj_id = null) => {
     if(obj !== null){

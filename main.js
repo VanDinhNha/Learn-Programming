@@ -6,36 +6,44 @@ const copy_code = (opj) => {
     navigator.clipboard.writeText(opj.parentElement.childNodes[3].childNodes[1].textContent)
 }
 
-function showMenuData(id = "", icon = "", name = "", menu_child){
-    let template_child = "";
-    if(menu_child !== null){
-        if(menu_child.length > 0 && Array.isArray(menu_child)){
-            menu_child.forEach(item =>{
-                template_child += `<a href="/?id-menu=${id}&id-content=${item.ID_CONTENT}" id="${id}_${item.ID_CONTENT}" class="menu-item__link">
-                    ${item.NAME}
+function showMenuData(name = "", menu){
+    let template_menu_child = "";
+    let template_menu = "";
+    menu.forEach(itemMenu => {
+        if(itemMenu.MENU_CHILD.length > 0){
+            itemMenu.MENU_CHILD.forEach(itemMenuChild =>{
+                template_menu_child += `<a href="/?id-menu=${itemMenu.ID}&id-content=${itemMenuChild.ID_CONTENT}" id="${itemMenu.ID}_${itemMenuChild.ID_CONTENT}" class="menu-item__link">
+                    ${itemMenuChild.NAME}
                 </a>`;
             })
         }
-    }
-    const template = `<li class="menu-item" id="${id}" onclick="showMenuChild(this)">
-    <div class="menu-item__parent">
-        <span class="menu-item__parent--line"></span>
-        ${icon}
-        <span class="menu-item__name">${name}</span>
-        <span class="hover-text" aria-hidden="true">${name}</span>
-    </div>
-    <div class="menu-item__child">
-        ${template_child}
-    </div>
-</li>`
-    menu_list.innerHTML += template; 
+        template_menu += `<li class="menu-item" id="${itemMenu.ID}" onclick="showMenuChild(this)">
+            <div class="menu-item__parent">
+                <span class="menu-item__parent--line"></span>
+                ${itemMenu.ICON}
+                <span class="menu-item__name">${itemMenu.NAME}</span>
+                <span class="hover-text" aria-hidden="true">${itemMenu.NAME}</span>
+            </div>
+            <div class="menu-item__child">
+                ${template_menu_child}
+            </div>
+        </li>`
+        template_menu_child = '';
+    })
+    const templateClassify = ` <span class="classify-menu">
+        ${name}
+    </span>
+    <ul id="menu_list">
+        ${template_menu}
+    </ul>`
+    menu_ul_li.innerHTML += templateClassify; 
 }
 
 async function loadDataMenu(){
     const response = await fetch(urlMenu);
     const menu_item = await response.json();
-    menu_item.forEach(item => {
-        showMenuData(item.ID, item.ICON, item.NAME, item.MENU_CHILD);
+    menu_item.forEach(itemClassify => {
+        showMenuData(itemClassify.NAME, itemClassify.MENU);
     });
     getUrlVars(url)
 }
@@ -104,7 +112,7 @@ async function loadDataContent(id){
         console.log(content_item);
         showDataContent(content_item, id);
     }
-    Loading.removeAttribute("style");
+    closeLoading();
 }
 
 function getUrlVars(url) {

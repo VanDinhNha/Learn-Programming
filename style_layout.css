@@ -48,7 +48,37 @@ a{
 textarea:focus {
     outline: none;
 }
-
+select{
+    width: 100%;
+    background-color: var(--background-dark);
+    padding: .6rem;
+    border: 0px;
+    border-radius: 5px;
+    color: var(--color-text);
+    border: solid 1px #fff;
+    /*for firefox*/
+    -moz-appearance: none;
+    /*for chrome*/
+    -webkit-appearance:none;
+    appearance: none;
+}
+select::before{
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+select:focus {
+    outline: none;
+}
+option{
+    border-radius: 5px;
+    padding: .5rem;
+}
 .color-white{
     color: white;
 }
@@ -311,6 +341,9 @@ body {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
+}
+.classify-menu{
+    color: #fff;
 }
 .menu-item{
     position: relative;
