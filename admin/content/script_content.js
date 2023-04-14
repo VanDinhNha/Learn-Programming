@@ -178,7 +178,7 @@ function add_detail(){
             </div>
             <div class="layout-item--detail">
                 <label class="color-text" for="language">Ngôn Ngữ</label> 
-                <input type="text" class="form-control" onkeyup="detail_value(this.value, 'LANGAUGE', ${count_detail});" spellcheck="false" name="language" id="language_detail_${count_detail}">
+                <input type="text" class="form-control" onkeyup="detail_value(this.value, 'LANGUAGE', ${count_detail});" spellcheck="false" name="language" id="language_detail_${count_detail}">
             </div>
             <div class="layout-item--detail">
                 <label class="color-text" for="code">CODE</label>
@@ -215,7 +215,7 @@ function add_detail(){
     detail.innerHTML += template;
      objDetail[count_detail] = {
         "TITLE": null,
-        "LANGAUGE": null,
+        "LANGUAGE": null,
         "CODE": null,
         "DESCRIBE": null,
         "NOTE": null,
