@@ -12,6 +12,7 @@
     --color-green-hover: #15b110;
     --color-blue: #1c3eff;
     --color-blue-hover: #162eb9;
+    --font-avo: "Avo", sans-serif;
 }
 *,
 *:before,
@@ -30,6 +31,12 @@ video {
   display: block;
   max-width: 100%;
 }
+body {
+    min-height: 100vh;
+    /* font-family: 'Inter', sans-serif; */
+    font-family: var(--font-avo);
+    background-color: var(--background-main);
+  }
 svg{
     width: 20px;
     height: 20px;
@@ -169,12 +176,6 @@ option{
 }
 input[type=text]:focus, input[type=number]:focus {
     outline: none;
-}
-
-body {
-  min-height: 100vh;
-  font-family: 'Inter', sans-serif;
-  background-color: var(--background-main);
 }
 /***scroll***/
 /* width */

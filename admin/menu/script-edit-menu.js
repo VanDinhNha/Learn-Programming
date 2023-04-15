@@ -4,15 +4,14 @@ const rank = document.querySelector("#rank");
 const icon = document.querySelector("#icon");
 const review_icon = document.querySelector(".review-icon");
 let arrRank = [];
-const url = location.href;
 
-async function getAllRank(){
-    const response = await fetch(urlRankMenu);
+async function getAllRank(id){
+    const response = await fetch(urlRankMenu+id);
     arrRank = await response.json();
-    showValueMenu(getUrlVars(url)["id"]).catch(handleError);
+    showValueMenu(getUrlVars(url)["id-menu"]).catch(handleError);
 }
 
-getAllRank().catch(handleError);
+getAllRank(getUrlVars(url)["id-classify"]).catch(handleError);
 
 function getUrlVars(url) {
     if(url !== undefined){
@@ -48,7 +47,7 @@ async function editMenu(id, name, rank, icon){
         return;
     }
     Loading.setAttribute("style", "display: flex;");
-    const respomse = await fetch(urlMenu,{
+    const respomse = await fetch(urlMenuLocal,{
         method: "PATCH",
         body: JSON.stringify({
             "ID": id, "NAME": name, "RANK": rank, "ICON": icon,
@@ -88,5 +87,5 @@ function debounceFn(func, wait, immediate) {
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    editMenu(getUrlVars(url)["id"], name.value, rank.value, icon.value)//.catch(handleError);
+    editMenu(getUrlVars(url)["id-menu"], name.value, rank.value, icon.value)//.catch(handleError);
 })

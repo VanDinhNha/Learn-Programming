@@ -38,7 +38,7 @@
                                     <a href="./add-menu.html" class="menu-item__link">
                                         Thêm Menu
                                     </a>
-                                    <a href="/" class="menu-item__link">
+                                    <a href="./../content/add-content.html" class="menu-item__link">
                                         Thêm Nội Dung
                                     </a>
                                 </div>
@@ -51,10 +51,10 @@
                                     <span class="hover-text acctive__hover-text" aria-hidden="true">Danh Sách</span>
                                 </div>
                                 <div class="">
-                                    <a href="/" class="menu-item__link acctive__menu-item__link">
+                                    <a href="./list-menu.html" class="menu-item__link acctive__menu-item__link">
                                         Danh Sách Menu
                                     </a>
-                                    <a href="/" class="menu-item__link">
+                                    <a href="./../content/list-content.html" class="menu-item__link">
                                         Danh Sách Nội Dung
                                     </a>
                                 </div>
@@ -73,6 +73,14 @@
                     </form>
                 </nav>
                 <div class="content-body">
+                    <div class="layout">
+                        <div class="layout-item">
+                            <label class="color-text" for="classify_menu">Chọn Phân Loại Menu</label>
+                            <select id="classify_menu" onchange="loadDataMenu(this.value)">
+                                <option value="NONE">Chọn ...</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="sticky">
                         <table id="table_menu">
                             <thead>
@@ -135,7 +143,7 @@
         </div>
     </div>
     <script src="./../../script_layout.js"></script>
-    <script src="./main-list-menu.js"></script>
+    <script src="./script-list-menu.js"></script>
     <script>
         const Loading = document.querySelector(".loading");
     //     window.onload = function()

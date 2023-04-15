@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm Menu</title>
+    <title>Sửa Nội Dung</title>
     <link rel="stylesheet" href="./../../style_layout.css">
-    <link rel="stylesheet" href="./style-add-menu.css">
+    <link rel="stylesheet" href="./style-add-content.css">
 </head>
 <body>
     <div class="wrapper">
@@ -28,17 +28,17 @@
                     <li class="menu-ul-li">
                         <ul id="menu_list">
                             <li class="menu-item" onclick="showMenuChild(this)">
-                                <div class="menu-item__parent acctive__menu-item__parent">
-                                    <span class="menu-item__parent--line acctive__menu-item__parent--line"></span>
+                                <div class="menu-item__parent">
+                                    <span class="menu-item__parent--line"></span>
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Edit / Add_Plus_Circle"> <path id="Vector" d="M8 12H12M12 12H16M12 12V16M12 12V8M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
                                     <span class="menu-item__name">Thêm</span>
-                                    <span class="hover-text acctive__hover-text" aria-hidden="true">Thêm</span>
+                                    <span class="hover-text" aria-hidden="true">Thêm</span>
                                 </div>
-                                <div class="">
-                                    <a href="./add-menu.html" class="menu-item__link acctive__menu-item__link">
+                                <div class="menu-item__child">
+                                    <a href="./../menu/add-menu.html" class="menu-item__link">
                                         Thêm Menu
                                     </a>
-                                    <a href="./../content/add-content.html" class="menu-item__link">
+                                    <a href="./add-content.html" class="menu-item__link">
                                         Thêm Nội Dung
                                     </a>
                                 </div>
@@ -51,10 +51,10 @@
                                     <span class="hover-text" aria-hidden="true">Danh Sách</span>
                                 </div>
                                 <div class="menu-item__child">
-                                    <a href="./list-menu.html" class="menu-item__link">
+                                    <a href="./../menu/list-menu.html" class="menu-item__link">
                                         Danh Sách Menu
                                     </a>
-                                    <a href="./../content/list-content.html" class="menu-item__link">
+                                    <a href="/" class="menu-item__link">
                                         Danh Sách Nội Dung
                                     </a>
                                 </div>
@@ -73,35 +73,59 @@
                     </form>
                 </nav>
                 <div class="content-body">
-                    <form id="form_add_menu" method="post">
-                        <div class="layout">
-                            <div class="layout-item">
-                                <label class="color-text" for="menu_main">Phân Loại Menu</label>
-                                <select id="classify" onchange="getAllRankMenu(this.value)">
-                                    <option value="NONE">Chọn ...</option>
-                                </select>
-                            </div>
-                            <div class="layout-item">
-                                <label class="color-text" for="name">Tên Menu</label>
-                                <input class="form-control" autocomplete="off" type="text" name="name" id="name">                           
-                            </div>
-                            <div class="layout-item">
-                                <label class="color-text" for="rank">Thứ Tự</label>
-                                <input class="form-control" autocomplete="off" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="rank" id="rank">                           
-                            </div>
-                            <div class="layout-item">
-                                <label class="color-text" for="icon">Icon</label>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="<svg> ... </svg>" autocomplete="off" oninput="reviewIcon(this)" type="text" name="icon" id="icon">
-                                    <div class="review-icon"></div>
-                                </div>                            
+                    <div class="layout">
+                        <div class="layout-item">
+                            <label class="color-text" for="classify_menu">Chọn Phân Loại Menu</label>
+                            <select id="classify_menu" onchange="loadDataMenu(this.value)">
+                                <option value="NONE">Chọn ...</option>
+                            </select>
+                        </div>
+                        <div class="layout-item">
+                            <label class="color-text" for="menu_main">Chọn Menu Chính</label>
+                            <select id="menu_main" onchange="getAllRank(this.value)">
+                                <option value="NONE">Chọn ...</option>
+                            </select>
+                        </div>
+                        <div class="layout-item">
+                            <label class="color-text" for="name_menu_child">Tên Menu Con</label>
+                            <input class="form-control" spellcheck="false" autocomplete="off" type="text" name="name_menu_child" id="name_menu_child">                           
+                        </div>
+                        <div class="layout-item">
+                            <label class="color-text" for="rank_menu_child">Thứ Tự</label>
+                            <input class="form-control" autocomplete="off" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="rank_menu_child" id="rank_menu_child">                           
+                        </div>
+                        <div class="layout-item">
+                            <label class="color-text" for="describe">Mô Tả</label>
+                            <textarea class="form-control" spellcheck="false" rows="3" id="describe"></textarea>
+                        </div>
+                        <div class="layout-item">
+                            <label class="color-text" for="note">Ghi Chú</label>
+                            <textarea class="form-control" spellcheck="false" rows="3" id="note"></textarea>
+                        </div>
+                        <div class="layout-item">
+                            <div class="file-upload-container">
+                                <div class="file-upload">
+                                    <div class="center" style="line-height: 40px;">
+                                        <p class="title-file-upload">Kéo thả hình vào đây</p>
+                                        <p class="text-center color-text">Hoặc</p>
+                                        <button class="btn-upload">
+                                            Chọn Hình
+                                            <span>
+                                                <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M771.676772 844.966484l-493.818868-2.409202C155.877326 826.595933 63.123554 722.814917 63.123554 597.698178c0-130.716368 102.592286-238.521254 231.509687-246.711313 49.19257-103.481018 153.09031-169.576911 268.529285-169.576911 163.496056 0 296.588862 132.64332 297.338346 295.968388 60.968276 35.243157 98.267394 99.284112 98.267394 170.402163 0 97.314157-71.032044 179.008943-165.167037 194.371318l-21.924457 2.814661z m-459.914953-43.849937l458.661718-0.48225c81.031308-4.62489 144.493769-71.770266 144.493768-152.854816 0-59.084327-33.145216-111.895308-86.501928-137.82418l-12.921432-6.284608 0.888732-19.292047c0.127986-1.87371 0.267234-3.736158 0.267234-5.63137 0-139.772633-113.715776-253.488409-253.488409-253.488409-102.463276 0-194.264834 61.086022-233.875886 155.627498l-5.598605 13.370918-14.495144 0.086007c-111.499064 0.653239-202.219399 91.876302-202.2194 203.353864 0 108.704881 85.142208 197.830003 193.825588 202.904379l10.963764 0.515014z" fill="#ffffff"></path><path d="M532.875998 390.961396L370.321916 553.516502l34.921657 34.921657 102.935287-102.935287V711.5317h49.385061V485.502872l102.934263 102.935287 34.93292-34.921657z" fill="#abd3f2"></path></g></svg>
+                                            </span>
+                                          </button>
+                                        <input class="file-upload-input" type="file" multiple accept="image/*" id="file-upload-input" name="file-upload-input" />
+                                    </div>
+                                </div>
+                                <div class="review-image"></div>
                             </div>
                         </div>
-                        <div class="center">
-                            <button class="btn bg-blue" type="submit">Lưu</button>
-                        </div>
-                    </form>
-                    
+                    </div>
+                    <div class="detail"></div>
+                    <div class="center row">
+                        <button class="btn bg-blue mr-1" onclick="save()">Lưu</button>
+                        <button class="btn bg-green" onclick="add_detail();">Thêm Code</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -135,7 +159,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="modal-title"></span>
-                    <button onclick="closeModal();" class="btn bg-transparent">
+                    <button class="btn bg-transparent">
                         <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"></path></g></svg>
                     </button>
                 </div>
@@ -148,14 +172,6 @@
         </div>
     </div>
     <script src="./../../script_layout.js"></script>
-    <script src="./script-add-menu.js"></script>
-    <script>
-        const Loading = document.querySelector(".loading");
-    //     window.onload = function()
-    //    {
-    //        const Loading = document.querySelector(".loading");
-    //        Loading.removeAttribute("style");
-    //    };
-   </script>
+    <script src="./script-edit-content.js"></script>
 </body>
 </html>

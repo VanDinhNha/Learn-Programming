@@ -24,14 +24,16 @@
 .content-body-name--text{
     font-size: 60px;
     color: transparent;
+    font-weight: bold;
 }
 .content-body-detail{
-    padding: 0px 1rem;
+    padding: 0px .5rem;
 }
 .content-body-detail__title--text{
-    color: transparent;
+    color: var(--color-text-active);
     margin: 10px;
     font-size: 24px;
+    font-weight: bold;
 }
 .content-body--title{
     font-size: 2rem;
@@ -43,10 +45,10 @@
 .content-body--describe, .content-body-detail__code--describe{
     font-size: 1.2rem;
     color: transparent;
-    margin: 1rem 0;
+    margin: 1rem 0 0 0;
     line-height: 2rem;
     padding: 0 10px;
-    text-indent: 50px;
+    /* text-indent: 50px; */
 }
 .content-body--image, .content-body-detail__image{
     width: 90%;
@@ -133,6 +135,7 @@
     animation: 1.5s shine linear infinite;
     color: transparent;
     margin-top: 15px;
+    visibility: visible;
 }
 @keyframes shine {
     to {

@@ -4,6 +4,7 @@ const mobile_menu_background = document.querySelector(".mobile-menu-background")
 const icon_menu = document.querySelector(".icon-menu");
 const menu_ul_li = document.querySelector(".menu-ul-li");
 
+const url = location.href;
 const urlRankMenu = "http://learn-programming-test.com/api/RANK_MENU/";
 const urlRankMenuChild = "http://learn-programming-test.com/api/RANK_MENU_CHILD/";
 const urlMenu = "http://learn-programming-test.com/api/MENU/";
@@ -69,7 +70,7 @@ function showModal(id, title, content){
     modal_body.textContent = content;
     modal_title.textContent = title;
     modal.setAttribute("style", "display: grid;");
-    btn_submit.setAttribute("onclick", `deleteMenu(${id}).catch(handleError);`)//.catch(handleError)
+    btn_submit.setAttribute("onclick", `Delete('${id}').catch(handleError);`)//.catch(handleError)
 }
 
 function closeModal(){
