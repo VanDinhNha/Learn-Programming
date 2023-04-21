@@ -1,0 +1,157 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 50%;
+  margin: 0 auto;
+}
+input,
+select,
+textarea {
+  background-color: transparent;
+  outline: none;
+}
+button {
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+}
+body {
+  min-height: 100vh;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+.authentication{
+    background-color: var(--background-gray);
+    border-radius: 15px;
+    min-height: 600px;
+    min-width: 400px;
+    overflow: hidden;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.header{
+    height: 3rem;
+    background-color: var(--background-dark);
+    border-radius: 15px 15px 0 0;
+    padding-top: 2px;
+    display: flex;
+    align-items: center;
+}
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    border-radius: 10px 0 10px 0;
+}
+.dots {
+    display: flex;
+    justify-content: last baseline;
+}
+.dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+.dot-1 {
+    background-color: var(--red);
+}
+.dot-2 {
+    background-color: var(--yellow);
+}
+.dot-3 {
+    background-color: var(--green);
+}
+
+.top p {
+    font-size: 20px;
+    font-weight: bold;
+}
+.dot , .top p {
+    margin: 5px;
+}
+.tab{
+    height: 85%;
+    padding: 13px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 5px;
+    color: #fff;
+}
+.tab-acctive{
+    background-color: var(--background-gray);
+}
+.body{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    min-height: 80%;
+}
+.login-form, .register-form{
+    margin-top: 20px;
+    width: 400px;
+}
+.form-input {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 1em 0 1em 0;
+    position: relative;
+}
+.form-control{
+    font-size: 100%;
+    padding: 0.8em;
+    outline: none;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    width: 100%;
+    color: #fff;
+    background-color: var(--background-gray)
+}
+input[type=text]:focus, input[type=number]:focus {
+    outline: none;
+}
+.form-label{
+    font-size: 100%;
+    position: absolute;
+    left: 0;
+    padding: 0.5em;
+    margin: .3rem 0 0 0.5em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.form-input :is(input:focus, input:valid)~label {
+    transform: translateY(-50%) scale(.9);
+    margin: 0em;
+    margin-left: 1.3em;
+    padding: 0.4em;
+  }
+.error-message{
+
+}
+.required-field-message{
+
+}
+.btn{
+
+}
+.btn-primary{
+
+}

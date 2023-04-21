@@ -66,7 +66,9 @@ body {
 .wrapper{
     padding: 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 .card {
     font-family: monospace;
@@ -203,7 +205,7 @@ body {
 .web{
     background-color: var(--background-dark);
     width: 48%;
-    height: calc(100vh - 4rem);
+    height: 500px;
     border-radius: 15px;
     overflow: hidden;
 }
@@ -213,7 +215,7 @@ body {
     text-align: center;
 }
 .header{
-    height: 3rem;
+    height: 40px;
     background-color: var(--background-dark);
     border-radius: 15px 15px 0 0;
     border-bottom: solid 1px var(--background-main);

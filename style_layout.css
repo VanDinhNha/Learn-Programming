@@ -2,6 +2,7 @@
     --background-dark: #161616;
     --background-main: #000;
     --background-code: #1e1f35;
+    --background-gray: #5e5e5e;;
     --color-text: #4e4d4d;
     --color-text-active: #fff;
     --color-main1: #00f8ec;
@@ -13,6 +14,10 @@
     --color-blue: #1c3eff;
     --color-blue-hover: #162eb9;
     --font-avo: "Avo", sans-serif;
+    --red: #ff605c;
+    --yellow: #ffbd44;
+    --green: #00ca4e;
+    --while: #fff;
 }
 *,
 *:before,
@@ -63,6 +68,7 @@ select{
     border-radius: 5px;
     color: var(--color-text);
     border: solid 1px #fff;
+    color: #fff;
     /*for firefox*/
     -moz-appearance: none;
     /*for chrome*/
@@ -126,6 +132,14 @@ option{
 .bg-transparent{
     background-color: transparent;
 }
+.bg-black{
+    background-color: var(--background-main);
+    color: #fff;
+}
+.bg-gray{
+    background-color: var(--background-gray);
+    color: #fff;
+}
 
 .btn{
     display: inline-block;
@@ -149,8 +163,14 @@ option{
 .row{
     display: flex;
 }
+.justify-content-between{
+    justify-content: space-between;
+}
 .mr-1{
     margin-right: 1rem;
+}
+.ml-1{
+    margin-left: 1rem;
 }
 .text-center{
     text-align: center;
@@ -159,23 +179,88 @@ option{
     display: flex;
     margin-bottom: 1rem;
 }
+.form-input {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 1em 0 1em 0;
+    position: relative;
+}
 .form-control{
-    display: block;
+    font-size: 100%;
+    padding: .6rem;
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: 5px;
     width: 100%;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--color-text);
-    background-color: var(--background-dark);
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: #fff;
+    background-color: var(--background-dark)
 }
 input[type=text]:focus, input[type=number]:focus {
     outline: none;
+}
+  .check {
+    cursor: pointer;
+    position: relative;
+    width: 1.7rem;
+    /* height: 1.7rem; */
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+    margin-top: -2px;
+  }
+  
+  .check:before {
+    content: "";
+    position: absolute;
+    top: -17px;
+    left: -15px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(34,50,84,0.03);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  .check svg {
+    position: relative;
+    z-index: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #c8ccd4;
+    stroke-width: 1.5;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease;
+}
+.cbx-text{
+    cursor: pointer;
+    color: var(--color-text-active);
+}
+.check svg path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+}
+  
+.check svg polyline {
+    stroke-dasharray: 22;
+    stroke-dashoffset: 66;
+}
+
+.check:hover:before {
+    opacity: 1;
+}
+  
+input[type="checkbox"]:checked + .check svg path {
+    stroke-dashoffset: 60;
+    transition: all 0.3s linear;
+}
+  
+input[type="checkbox"]:checked + .check svg polyline {
+    stroke-dashoffset: 42;
+    transition: all 0.2s linear;
+    transition-delay: 0.15s;
+  }
+.hidden{
+    display: none;
 }
 /***scroll***/
 /* width */
@@ -336,6 +421,7 @@ input[type=text]:focus, input[type=number]:focus {
 }
 .menu-ul-li{
     font-size: 20px;
+    margin-bottom: 50px;
 }
 .menu-ul-li__title{
     background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
@@ -495,6 +581,15 @@ input[type=text]:focus, input[type=number]:focus {
     transition: all .3s;
     background-color: var(--color-text);
 }
+.menu-buttom{
+    position: fixed;
+    bottom: 0;
+    border-top: solid 1px black;
+    background-color: var(--background-dark);
+    height: 70px;
+    width: 230px;
+    z-index: 6;
+}
 .mobile-menu-background{
     position: fixed;
     inset: 0;
@@ -524,8 +619,8 @@ input[type=text]:focus, input[type=number]:focus {
     z-index: 1;
 }
 .search-box {
-    width: 50%;
-    margin-top: -17px;
+    width: 60%;
+    margin: -17px 0 0 250px;
     padding: 10px;
 }
 .search-input{
@@ -685,6 +780,10 @@ input[type=search]:focus {
     .content{
         width: 100%;
     }
+    .search-box{
+        margin: -17px 0 0 60px;
+        width: 70%;
+    }
     .footer-body{
         width: 100%;
     }
@@ -709,7 +808,7 @@ input[type=search]:focus {
     }
     .search-box{
         width: 100%;
-        margin-left: 60px;
+        margin: -17px 0 0 60px;
     }
     .content-header{
         justify-content: end;

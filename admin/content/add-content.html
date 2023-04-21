@@ -76,23 +76,23 @@
                     <div class="layout">
                         <div class="layout-item">
                             <label class="color-text" for="classify_menu">Chọn Phân Loại Menu</label>
-                            <select id="classify_menu" onchange="loadDataMenu(this.value)">
+                            <select id="classify_menu">
                                 <option value="NONE">Chọn ...</option>
                             </select>
                         </div>
                         <div class="layout-item">
                             <label class="color-text" for="menu_main">Chọn Menu Chính</label>
-                            <select id="menu_main" onchange="getAllRank(this.value)">
+                            <select id="menu_main">
                                 <option value="NONE">Chọn ...</option>
                             </select>
                         </div>
                         <div class="layout-item">
                             <label class="color-text" for="name_menu_child">Tên Menu Con</label>
-                            <input class="form-control" spellcheck="false" autocomplete="off" type="text" name="name_menu_child" id="name_menu_child">                           
+                            <input class="form-control" spellcheck="false" autocomplete="off" type="text" id="name_menu_child">                           
                         </div>
                         <div class="layout-item">
                             <label class="color-text" for="rank_menu_child">Thứ Tự</label>
-                            <input class="form-control" autocomplete="off" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="rank_menu_child" id="rank_menu_child">                           
+                            <input class="form-control" autocomplete="off" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="rank_menu_child">                           
                         </div>
                         <div class="layout-item">
                             <label class="color-text" for="describe">Mô Tả</label>
@@ -124,7 +124,7 @@
                     <div class="detail"></div>
                     <div class="center row">
                         <button class="btn bg-blue mr-1" onclick="save()">Lưu</button>
-                        <button class="btn bg-green" onclick="add_detail();">Thêm Code</button>
+                        <button class="btn bg-green" id="addDetail">Thêm Nội Dung</button>
                     </div>
                 </div>
             </div>

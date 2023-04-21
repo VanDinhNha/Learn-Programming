@@ -76,9 +76,14 @@
                     <div class="layout">
                         <div class="layout-item">
                             <label class="color-text" for="classify_menu">Chọn Phân Loại Menu</label>
-                            <select id="classify_menu" onchange="loadDataMenu(this.value)">
-                                <option value="NONE">Chọn ...</option>
-                            </select>
+                            <div class="form-group">
+                                
+                                <select id="classify_menu">
+                                    <option value="NONE">Chọn ...</option>
+                                </select>
+                                <button class="btn bg-blue ml-1" id="btn_reset">reset</button>
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="sticky">

@@ -77,22 +77,22 @@
                         <div class="layout">
                             <div class="layout-item">
                                 <label class="color-text" for="menu_main">Phân Loại Menu</label>
-                                <select id="classify" onchange="getAllRankMenu(this.value)">
+                                <select id="classify">
                                     <option value="NONE">Chọn ...</option>
                                 </select>
                             </div>
                             <div class="layout-item">
                                 <label class="color-text" for="name">Tên Menu</label>
-                                <input class="form-control" autocomplete="off" type="text" name="name" id="name">                           
+                                <input class="form-control" spellcheck="false" autocomplete="off" type="text" id="name">                           
                             </div>
                             <div class="layout-item">
                                 <label class="color-text" for="rank">Thứ Tự</label>
-                                <input class="form-control" autocomplete="off" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="rank" id="rank">                           
+                                <input class="form-control" spellcheck="false" autocomplete="off" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="rank">                           
                             </div>
                             <div class="layout-item">
                                 <label class="color-text" for="icon">Icon</label>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="<svg> ... </svg>" autocomplete="off" oninput="reviewIcon(this)" type="text" name="icon" id="icon">
+                                    <input class="form-control" spellcheck="false" placeholder="<svg> ... </svg>" autocomplete="off" type="text" id="icon">
                                     <div class="review-icon"></div>
                                 </div>                            
                             </div>

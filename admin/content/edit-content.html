@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sửa Nội Dung</title>
     <link rel="stylesheet" href="./../../style_layout.css">
-    <link rel="stylesheet" href="./style-add-content.css">
+    <link rel="stylesheet" href="./style-edit-content.css">
 </head>
 <body>
     <div class="wrapper">
@@ -74,12 +74,6 @@
                 </nav>
                 <div class="content-body">
                     <div class="layout">
-                        <div class="layout-item">
-                            <label class="color-text" for="classify_menu">Chọn Phân Loại Menu</label>
-                            <select id="classify_menu" onchange="loadDataMenu(this.value)">
-                                <option value="NONE">Chọn ...</option>
-                            </select>
-                        </div>
                         <div class="layout-item">
                             <label class="color-text" for="menu_main">Chọn Menu Chính</label>
                             <select id="menu_main" onchange="getAllRank(this.value)">

@@ -1,20 +1,15 @@
-const form = document.querySelector("#form_add_menu");
-const rankChek = document.querySelector("#rank");
-const iconReview = document.querySelector("#icon");
-const review_icon = document.querySelector(".review-icon");
-const list_classify = document.querySelector("#classify");
 let arrRank = [];
 
 getAllClassify().catch(handleError);
 
 async function getAllClassify(){
+    const list_classify = document.querySelector("#classify");
     const response = await fetch(urlClassify);
     const classify_item = await response.json();
     classify_item.forEach(item => {
         list_classify.innerHTML += `<option value="${item.ID}">${item.NAME}</option>`
     });
-    closeLoading();
-    //getAllRank().catch(handleError);
+    closeLoad();
 }
 
 async function getAllRankMenu(value){
@@ -22,7 +17,26 @@ async function getAllRankMenu(value){
     arrRank = await response.json();
 }
 
-async function addMenu(classify, name, rank, icon){
+document.querySelector('#classify').addEventListener('change', (e) => {
+    getAllRankMenu(e.target.value).catch(handleError)
+});
+
+document.querySelector("#rank").addEventListener("keyup", debounceFn(function (e) {
+    arrRank.includes(Number(e.target.value)) ? 
+    document.querySelector("#rank").setAttribute("style", "border-color: red") : 
+    document.querySelector("#rank").removeAttribute("style")
+}, 500))
+
+document.querySelector('#icon').addEventListener('input', debounceFn(function (e) {
+        document.querySelector(".review-icon").innerHTML = e.target.value;
+}, 500))
+
+document.querySelector("#form_add_menu").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = this.elements["name"].value;
+    const rank = this.elements["rank"].value;
+    const icon = this.elements["icon"].value;
+    const classify = this.elements["classify"].value;
     if(classify === "NONE"){
         alert('chưa chọn phân loại menu')
         return;
@@ -32,15 +46,24 @@ async function addMenu(classify, name, rank, icon){
         return;
     }
     if(rank === ""){
-        alert('chưa nhập rank');
+        alert('chưa nhập cấp độ');
         return;
     }
     if(icon === ""){
         alert('chưa nhập icon');
         return;
     }
-    Loading.setAttribute("style", "display: flex;");
-    const respomse = await fetch(urlMenuLocal,{
+    if(arrRank.includes(Number(rank))){
+        if(confirm('cấp độ này đã tồn tại, bạn có muốn sắp sếp lại cấp độ menu không') === false){
+            return;
+        }
+    }
+    addMenu(classify, name, rank, icon).catch(handleError);
+})
+
+async function addMenu(classify, name, rank, icon){
+    showLoad();
+    const respomse = await fetch(urlMenu,{
         method: "POST",
         body: JSON.stringify({
             "ID_CLASSIFY_MENU": classify, "NAME": name, "RANK": rank, "ICON": icon,
@@ -49,43 +72,8 @@ async function addMenu(classify, name, rank, icon){
             "Content-type": "application/json; charset=UTF-8",
         },
     });
-    Loading.removeAttribute("style");
-    //cần sửa ko reload và tìm cách nhận message từ server
+    closeLoad();
     respomse.status === 200 ? 
         alert('thêm thành công') & location.reload() : 
         alert('thêm thất bại')
 }
-rankChek.addEventListener("keyup", debounceFn(function (e) {
-    arrRank.includes(Number(rankChek.value)) ? 
-    rankChek.setAttribute("style", "border-color: red") : 
-    rankChek.removeAttribute("style")
-}, 100))
-
-function reviewIcon(obj){
-    review_icon.innerHTML = obj.value;
-}
-
-function debounceFn(func, wait, immediate) {
-    let timeout;
-    return function () {
-        let context = this,
-            args = arguments;
-        let later = function () {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        let callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if(callNow) func.apply(context, args);
-    };
-}
-
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const name = this.elements["name"].value;
-    const rank = this.elements["rank"].value;
-    const icon = this.elements["icon"].value;
-    const classify = this.elements["classify"].value;
-    addMenu(classify, name, rank, icon);
-})

@@ -1,9 +1,17 @@
-const form = document.querySelector("#form_edit_menu");
-const name = document.querySelector("#name");
-const rank = document.querySelector("#rank");
-const icon = document.querySelector("#icon");
-const review_icon = document.querySelector(".review-icon");
 let arrRank = [];
+getAllRank(getUrlVars(url)["id-classify"]).catch(handleError);
+
+async function getAllClassify(id){
+    const list_classify = document.querySelector("#classify");
+    const response = await fetch(urlClassify);
+    const classify_item = await response.json();
+    classify_item.forEach(item => {
+        list_classify.innerHTML += `<option value="${item.ID}" ${
+            item.ID === id ? "selected" : ""
+        }>${item.NAME}</option>`
+    });
+    closeLoad();
+}
 
 async function getAllRank(id){
     const response = await fetch(urlRankMenu+id);
@@ -11,81 +19,70 @@ async function getAllRank(id){
     showValueMenu(getUrlVars(url)["id-menu"]).catch(handleError);
 }
 
-getAllRank(getUrlVars(url)["id-classify"]).catch(handleError);
-
-function getUrlVars(url) {
-    if(url !== undefined){
-        const vars = {};
-        const parts = url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-            vars[key] = value;
-        });
-        return vars;
-    }
-}
-
 async function showValueMenu(id){
     const response = await fetch(urlMenu + id);
     const data = await response.json();
-    name.value = data.NAME;
-    rank.value = data.RANK;
-    icon.value = data.ICON;
-    review_icon.innerHTML = data.ICON;
-    Loading.removeAttribute("style");
+    getAllClassify(data.ID_CLASSIFY_MENU).catch(handleError);
+    document.querySelector("#name").value = data.NAME;
+    document.querySelector("#rank").value = data.RANK;
+    document.querySelector("#icon").value = data.ICON;
+    document.querySelector(".review-icon").innerHTML = data.ICON;
+    const index = arrRank.indexOf(Number(data.RANK));
+    arrRank.splice(index, 1)
+    closeLoad();
 }
 
-async function editMenu(id, name, rank, icon){
-    if(name === ""){
+document.querySelector("#rank").addEventListener("keyup", debounceFn(function (e) {
+    arrRank.includes(Number(rank.value)) ? 
+    document.querySelector("#rank").setAttribute("style", "border-color: red") : 
+    document.querySelector("#rank").removeAttribute("style")
+}, 100))
+
+document.querySelector('#icon').addEventListener('input', debounceFn(function (e) {
+    document.querySelector(".review-icon").innerHTML = e.target.value;
+}, 500))
+
+document.querySelector("#form_edit_menu").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const name = this.elements["name"].value;
+    const rank = this.elements["rank"].value;
+    const icon = this.elements["icon"].value;
+    const classify = this.elements["classify"].value;
+    if(classify === "NONE" || classify === null){
+        alert('chưa chọn phân loại menu')
+        return;
+    }
+    if(name === "" || name === null){
         alert('chưa nhập tên');
         return;
     }
-    if(rank === ""){
+    if(rank === "" || rank === null){
         alert('chưa nhập rank');
         return;
     }
-    if(icon === ""){
+    if(icon === "" || icon === null){
         alert('chưa nhập icon');
         return;
     }
-    Loading.setAttribute("style", "display: flex;");
-    const respomse = await fetch(urlMenuLocal,{
+    if(arrRank.includes(Number(rank))){
+        if(confirm('cấp độ này đã tồn tại, bạn có muốn sắp sếp lại cấp độ menu không') === false){
+            return;
+        }
+    }
+    editMenu(getUrlVars(url)["id-menu"], name, rank, icon, classify).catch(handleError);
+});
+
+async function editMenu(id, name, rank, icon, classify){
+    showLoad();
+    const respomse = await fetch(urlMenu,{
         method: "PATCH",
         body: JSON.stringify({
-            "ID": id, "NAME": name, "RANK": rank, "ICON": icon,
+            "ID": id, "NAME": name, "RANK": rank, "ICON": icon, "ID_CLASSIFY_MENU": classify
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8",
         },
     });
-    Loading.removeAttribute("style");
-    respomse.status === 200 ? alert('Sửa thành công') : alert('Sủa thất bại')
+    closeLoad();
+    respomse.status === 200 ? alert('Sửa thành công') : alert('Sửa thất bại')
 }
-rank.addEventListener("keyup", debounceFn(function (e) {
-    arrRank.includes(Number(rank.value)) ? 
-    rank.setAttribute("style", "border-color: red") : 
-    rank.removeAttribute("style")
-}, 100))
-
-function reviewIcon(obj){
-    review_icon.innerHTML = obj.value;
-}
-
-function debounceFn(func, wait, immediate) {
-    let timeout;
-    return function () {
-        let context = this,
-            args = arguments;
-        let later = function () {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        let callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if(callNow) func.apply(context, args);
-    };
-}
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    editMenu(getUrlVars(url)["id-menu"], name.value, rank.value, icon.value)//.catch(handleError);
-})

@@ -48,10 +48,11 @@
     margin: 1rem 0 0 0;
     line-height: 2rem;
     padding: 0 10px;
-    /* text-indent: 50px; */
 }
 .content-body--image, .content-body-detail__image{
-    width: 90%;
+    max-width: 90%;
+    max-height: 400px;
+    object-fit: contain;
     margin: 1rem auto .5rem auto;
     border-radius: 10px
 }
@@ -59,6 +60,7 @@
     text-align: center;
     color: transparent;
     font-size: 12px;
+    margin-top: -9px;
 }
 .content-body--attention, .content-body-detail__code--attention{
     font-size: 1rem;

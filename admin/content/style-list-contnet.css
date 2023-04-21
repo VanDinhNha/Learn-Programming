@@ -8,7 +8,7 @@
     max-height: 800px;
 }
 .layout{
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; 
 }
 table{
     width: 100%;

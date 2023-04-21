@@ -76,6 +76,12 @@
                     <form id="form_edit_menu" method="put">
                         <div class="layout">
                             <div class="layout-item">
+                                <label class="color-text" for="menu_main">Phân Loại Menu</label>
+                                <select id="classify">
+                                    <option value="NONE">Chọn ...</option>
+                                </select>
+                            </div>
+                            <div class="layout-item">
                                 <label class="color-text" for="name">Tên Menu</label>
                                 <input class="form-control" autocomplete="off" type="text" name="name" id="name">                           
                             </div>
@@ -86,7 +92,7 @@
                             <div class="layout-item">
                                 <label class="color-text" for="icon">Icon</label>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="<svg> ... </svg>" autocomplete="off" oninput="reviewIcon(this)" type="text" name="icon" id="icon">
+                                    <input class="form-control" placeholder="<svg> ... </svg>" autocomplete="off" type="text" name="icon" id="icon">
                                     <div class="review-icon"></div>
                                 </div>                            
                             </div>
