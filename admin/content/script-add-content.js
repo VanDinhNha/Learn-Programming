@@ -5,17 +5,11 @@ const review_image = document.querySelector('.review-image');
 const detail = document.querySelector('.detail');
 const listFileImage = [];
 const listDetail = [];
-
-let count_img = 0;
-let count_detail = 0;
-let count_detail_img = 0;
 let arrRank = [];
+let storageCapacity = 0;
+
 let arrMenu = {};
 
-let fileImageDetail = {};
-
-let storageCapacity = 0;
-let arrDescribeImage = [];
 
 loadDatacLassifyMenu().catch(handleError);
 
@@ -121,7 +115,6 @@ function show_file_upload(Image){
                     </button>
                 </div>`
                 review_image.insertAdjacentHTML("beforeend", template);
-                count_img++;
             }
             reader.readAsDataURL(Image);
         }
@@ -241,7 +234,6 @@ document.querySelector('#addDetail').addEventListener('click', () => {
         "NOTE": null,
         "IMAGE_DATA": []
     });
-    count_detail++;
 });
 
 const observerDetailCallback = (mutationsList, observer) => {
@@ -258,6 +250,7 @@ const observerDetailCallback = (mutationsList, observer) => {
                     const imageDetail = node.querySelector('.file-upload--detail');
                     const uploadImageDetail = node.querySelector('.btn-upload--detail');
                     const btnRemoveDetail = node.querySelector('.btn-remove--detail');
+                    const btnRemoveImageDetail = node.querySelector('.btn-remove-image--detail');
                     if(titleDetail !== null){
                         handlerDetailValue(titleDetail);
                     }
@@ -284,6 +277,9 @@ const observerDetailCallback = (mutationsList, observer) => {
                     }
                     if (describeImage !== null) {
                         handleDescribeImageDetail(describeImage);
+                    }
+                    if(btnRemoveImageDetail !== null){
+                        removeImageDetail(btnRemoveImageDetail);
                     }
                 }
             }
@@ -376,21 +372,23 @@ function showFileUploadDetail(Index, Image, elementReview){
             <div class="image-infomation">
                 <p class="name-image">File ${Image.name} không được hỗ trợ</p>
             </div>
-            <button class="btn bg-red btn-remove-image">
+            <button class="btn bg-red btn-remove-image btn-remove-image--detail">
                 <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ffffff" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"></path></g></svg>
             </button>
         </div>`;
         elementReview.insertAdjacentHTML("beforeend", template);   
     }
 }
-//còn lỗi chưa lấy đúng elementIndex
+
 function handleDescribeImageDetail(element){
     element.addEventListener("input", debounceFn(function (e) {
+        e.preventDefault();
         const arrElementReview = document.querySelectorAll('.review-image--detail');
         const elementReview = element.parentNode.parentNode.parentNode;
         const elementReviewIndex = Array.prototype.indexOf.call(arrElementReview, elementReview);
-        const arrElement = document.querySelectorAll('.describe-image--detail');
-        const elementIndex = Array.prototype.indexOf.call(arrElement, e.target);
+        const arrElementItem = elementReview.childNodes;
+        const elementItem = element.parentNode.parentNode;
+        const elementIndex = Array.prototype.indexOf.call(arrElementItem, elementItem);
         listDetail[elementReviewIndex]["IMAGE_DATA"][elementIndex]["DESCRIBE"] = e.target.value;
     }, 500));
 }
@@ -408,15 +406,15 @@ function removeDelail(element){
     });
 }
 
-
 function removeImageDetail(element){
     element.addEventListener("click", (e) => {
         e.preventDefault();
         const arrElementReview = document.querySelectorAll('.review-image--detail');
         const elementReview = element.parentNode.parentNode;
         const elementReviewIndex = Array.prototype.indexOf.call(arrElementReview, elementReview);
-        const arrElement = document.querySelectorAll('.btn-remove-image--detail');
-        const elementIndex = Array.prototype.indexOf.call(arrElement, e.target.closest('.btn-remove-image'));
+        const arrElementItem = elementReview.childNodes;
+        const elementItem = element.parentNode;
+        const elementIndex = Array.prototype.indexOf.call(arrElementItem, elementItem);
         element.parentNode.className === 'item-image' ?
             elementIndex >= 0 ?
                 listDetail[elementReviewIndex]["IMAGE_DATA"].splice(elementIndex, 1) &&
@@ -427,14 +425,14 @@ function removeImageDetail(element){
             element.parentNode.remove();
     });
 }
-
-async function save(){
-    const ID_MENU = document.querySelector("#menu_main").value;
-    const ID_CLASSIFY = document.querySelector("#classify_menu").value;
-    const NAME = document.querySelector("#name_menu_child").value;
-    const RANK = document.querySelector("#rank_menu_child").value;
-    const DESCRIBE = document.querySelector("#describe").value;
-    const NOTE = document.querySelector("#note").value;
+document.querySelector("#form_add_content").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const ID_MENU = this.elements["menu_main"].value;
+    const ID_CLASSIFY = this.elements["classify_menu"].value;
+    const NAME = this.elements["name_menu_child"].value;
+    const RANK = this.elements["rank_menu_child"].value;
+    const DESCRIBE = this.elements["describe"].value;
+    const NOTE = this.elements["note"].value;
     if(ID_CLASSIFY === "NONE"){
         alert('chưa chọn phân loại menu')
         return;
@@ -451,13 +449,16 @@ async function save(){
         alert('chưa nhập tên thứ tự');
         return;
     }
-    if(arrRank.includes(Number(rankChek.value))){
+    if(arrRank.includes(Number(RANK.value))){
         if(confirm('cấp độ này đã tồn tại, bạn có muốn sắp sếp lại cấp độ không') === false){
             return;
         }
     }
+    addContent(ID_MENU, NAME, RANK, DESCRIBE, NOTE)//.catch(handleError);
+});
+async function addContent(ID_MENU, NAME, RANK, DESCRIBE, NOTE){
     showLoad();
-    const respomse = await fetch(urlContentLocal,{
+    const respomse = await fetch(urlContent,{
         method: "POST",
         body: JSON.stringify({
             "ID_MENU": ID_MENU,
@@ -465,7 +466,7 @@ async function save(){
             "NAME": NAME, 
             "DESCRIBE": DESCRIBE, 
             "NOTE": NOTE, 
-            "IMAGES": JSON.stringify(fileImage),
+            "IMAGES": JSON.stringify(listFileImage),
             "DETAIL": JSON.stringify(listDetail)
         }),
         headers: {
@@ -473,6 +474,6 @@ async function save(){
         },
     });
     closeLoad()
-    respomse.status === 200 ? alert('thêm thành công') : alert('thêm thất bại')
+    respomse.status === 200 ? alert('thêm thành công') & location.reload() : alert('thêm thất bại')
 }
 
