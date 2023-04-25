@@ -1,3 +1,4 @@
+loadDataMenu().catch(handleError);
 
 const copy_code = (opj) => {
     navigator.clipboard.writeText(opj.parentElement.childNodes[2].childNodes[1].textContent)
@@ -43,11 +44,10 @@ async function loadDataMenu(){
     menu_item.forEach(itemClassify => {
         showMenuData(itemClassify.NAME, itemClassify.MENU);
     });
-    loadDataContent(getUrlVars(url));
-    //getUrlVars(url)
+    loadDataContent(getUrlVars(url)).catch(handleError);
 }
 
-loadDataMenu().catch(handleError);
+
 //&lt;
 function showDataContent(value, obj_id){
     const content_body = document.querySelector(".content-body");

@@ -76,13 +76,13 @@
                     <div class="layout">
                         <div class="layout-item">
                             <label class="color-text" for="classify_menu">Chọn Phân Loại Menu</label>
-                            <select id="classify_menu" onchange="loadDataMenu(this.value)">
+                            <select id="classify_menu">
                                 <option value="NONE">Chọn ...</option>
                             </select>
                         </div>
                         <div class="layout-item">
                             <label class="color-text" for="menu_main">Chọn Menu</label>
-                            <select id="menu_main" onchange="loadDataContent(this.value);">
+                            <select id="menu_main">
                                 <option value="NONE">Chọn ...</option>
                             </select>
                         </div>
@@ -93,6 +93,7 @@
                                 <tr>
                                     <th style="max-width: 10px;">STT</th>
                                     <th>Tên Nội Dung</th>
+                                    <th>Thứ Tự</th>
                                     <th>Thao Tác</th>
                                 </tr>
                             </thead>

@@ -50,6 +50,7 @@ async function loadDatacLassifyMenu(){
 }
 
 document.querySelector("#classify_menu").addEventListener('change', function(e) {
+    e.preventDefault();
     const menu_main= document.querySelector("#menu_main");
     menu_main.innerHTML = '<option value="NONE">Chọn ...</option>';
     arrMenu[e.target.value].forEach(item => {
@@ -90,7 +91,7 @@ file_upload_input.addEventListener('change', () => {
 })
 
 function show_file_upload(Image){
-    const limitedCapacity = 1073741824;//byte
+    const limitedCapacity = 524288000;//byte, 500MB
     const review_image = document.querySelector(".review-image");
     if(Image.type.substring(0, 6) === "image/"){
         storageCapacity += Image.size;
@@ -110,7 +111,7 @@ function show_file_upload(Image){
                         <p class="size-image">${(Image.size / 1024).toFixed(1)} kb</p>
                         <input type="text" class="form-control describe-image" spellcheck="false">
                     </div>
-                    <button id="btn_remove_img" class="btn bg-red btn-remove-image">
+                    <button type="button" id="btn_remove_img" class="btn bg-red btn-remove-image">
                         <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ffffff" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"></path></g></svg>
                     </button>
                 </div>`
@@ -128,7 +129,7 @@ function show_file_upload(Image){
                             <div class="image-infomation">
                                 <p class="name-image">File ${Image.name} không được hỗ trợ</p>
                             </div>
-                            <button class="btn bg-red btn-remove-image">
+                            <button type="button" class="btn bg-red btn-remove-image">
                                 <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ffffff" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"></path></g></svg>
                             </button>
                             <span class="tooltip">File ${Image.name} không được hỗ trợ</span>
@@ -136,7 +137,7 @@ function show_file_upload(Image){
         review_image.insertAdjacentHTML("beforeend", template);       
     }
 }
-//đang sửa phần xóa
+
 const observerCallback = (mutationsList, observer) => {
     for (let mutation of mutationsList) {
         if (mutation.type === 'childList') {
@@ -180,7 +181,7 @@ function removeImage(element){
 document.querySelector('#addDetail').addEventListener('click', () => {
     const detail = document.querySelector(".detail");
     const template = `<div class="content--detail">
-        <button class="btn bg-red btn-remove--detail">
+        <button type="button" class="btn bg-red btn-remove--detail">
             <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ffffff" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"></path></g></svg>
         </button>
         <h2 class="text-center color-text">Nội Dung Chi Tiết</h2>
@@ -211,7 +212,7 @@ document.querySelector('#addDetail').addEventListener('click', () => {
                         <div class="center" style="line-height: 40px;">
                             <p class="title-file-upload--detail">Kéo thả hình vào đây</p>
                             <p class="text-center color-text">Hoặc</p>
-                            <button class="btn-upload--detail">
+                            <button type="button" class="btn-upload--detail">
                                 Chọn Hình
                                 <span>
                                     <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M771.676772 844.966484l-493.818868-2.409202C155.877326 826.595933 63.123554 722.814917 63.123554 597.698178c0-130.716368 102.592286-238.521254 231.509687-246.711313 49.19257-103.481018 153.09031-169.576911 268.529285-169.576911 163.496056 0 296.588862 132.64332 297.338346 295.968388 60.968276 35.243157 98.267394 99.284112 98.267394 170.402163 0 97.314157-71.032044 179.008943-165.167037 194.371318l-21.924457 2.814661z m-459.914953-43.849937l458.661718-0.48225c81.031308-4.62489 144.493769-71.770266 144.493768-152.854816 0-59.084327-33.145216-111.895308-86.501928-137.82418l-12.921432-6.284608 0.888732-19.292047c0.127986-1.87371 0.267234-3.736158 0.267234-5.63137 0-139.772633-113.715776-253.488409-253.488409-253.488409-102.463276 0-194.264834 61.086022-233.875886 155.627498l-5.598605 13.370918-14.495144 0.086007c-111.499064 0.653239-202.219399 91.876302-202.2194 203.353864 0 108.704881 85.142208 197.830003 193.825588 202.904379l10.963764 0.515014z" fill="#ffffff"></path><path d="M532.875998 390.961396L370.321916 553.516502l34.921657 34.921657 102.935287-102.935287V711.5317h49.385061V485.502872l102.934263 102.935287 34.93292-34.921657z" fill="#abd3f2"></path></g></svg>
@@ -343,29 +344,33 @@ function handleUploadImageDetail(element){
         });
 }
 function showFileUploadDetail(Index, Image, elementReview){
+    const limitedCapacity = 524288000;//byte, 500MB
     if(Image.type.substring(0, 6) === "image/"){
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            const imageBase64 = reader.result;
-            listDetail[Index]["IMAGE_DATA"].push({
-                ["IMAGE"]: imageBase64,
-                ["DESCRIBE"]: null,
-                ["TYPE"]: Image.type
-            });
-            const template = `<div class="item-image">
-                <img class="image" src="${imageBase64}" alt="image">
-                <div class="image-infomation">
-                    <p class="name-image">${Image.name}</p>
-                    <p class="size-image">${(Image.size / 1024).toFixed(1)} kb</p>
-                    <input type="text" class="form-control describe-image--detail" spellcheck="false">
-                </div>
-                <button class="btn bg-red btn-remove-image btn-remove-image--detail">
-                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ffffff" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"></path></g></svg>
-                </button>
-            </div>`
-            elementReview.insertAdjacentHTML("beforeend", template);
+        storageCapacity += Image.size;
+        if(storageCapacity <= limitedCapacity){
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const imageBase64 = reader.result;
+                listDetail[Index]["IMAGE_DATA"].push({
+                    ["IMAGE"]: imageBase64,
+                    ["DESCRIBE"]: null,
+                    ["TYPE"]: Image.type
+                });
+                const template = `<div class="item-image">
+                    <img class="image" src="${imageBase64}" alt="image">
+                    <div class="image-infomation">
+                        <p class="name-image">${Image.name}</p>
+                        <p class="size-image">${(Image.size / 1024).toFixed(1)} kb</p>
+                        <input type="text" class="form-control describe-image--detail" spellcheck="false">
+                    </div>
+                    <button class="btn bg-red btn-remove-image btn-remove-image--detail">
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ffffff" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"></path></g></svg>
+                    </button>
+                </div>`
+                elementReview.insertAdjacentHTML("beforeend", template);
+            }
+            reader.readAsDataURL(Image);
         }
-        reader.readAsDataURL(Image);
     }
     else{
         const template = `<div class="item-image-error">
@@ -474,6 +479,6 @@ async function addContent(ID_MENU, NAME, RANK, DESCRIBE, NOTE){
         },
     });
     closeLoad()
-    respomse.status === 200 ? alert('thêm thành công') & location.reload() : alert('thêm thất bại')
-}
+    respomse.status === 200 ? alert('thêm thành công')  : alert('thêm thất bại')
+}//& location.reload()
 
