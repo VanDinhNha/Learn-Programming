@@ -154,6 +154,12 @@ option{
     cursor: pointer;
     text-decoration: none;
 }
+.link{
+    color: #007bff
+}
+.link:hover{
+    text-decoration: revert;
+}
 .center{
     display: grid;
     justify-content: center;
@@ -392,7 +398,8 @@ input[type="checkbox"]:checked + .check svg polyline {
     box-shadow: 5px 0 20px var(--background-main);
 }
  .menu-border-avatar{
-    margin: 40px;
+    width: 170px;
+    margin: 10px auto;
     padding: 5px;
     border-radius: 50%;
     background-image: linear-gradient(to right, #00fcda, #ff00ea);
@@ -763,7 +770,57 @@ input[type=search]:focus {
     justify-content: space-between;
     padding: 5px;
 }
-  
+/* notification */
+.notification{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+    /* max-width: 300px; */
+}
+.error, .success{
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    /* width: auto; */
+    width: 300px;
+    min-height:50px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    animation: showNotification 5s;
+}
+.error svg, .success svg{
+    min-width: 20px;
+    min-height: 20px;
+    margin: 0;
+}
+.error{
+    background-color: #ff3838;
+}
+
+.success{
+    background-color: #3895ff;
+}
+.message{
+    color: #fff;
+    margin-left: 10px;
+}
+@keyframes showNotification{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes hiddenNotification{
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
 /*ui tablet*/
 @media (min-width: 768px) and (max-width: 991px) {
     .menu{

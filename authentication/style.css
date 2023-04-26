@@ -40,13 +40,14 @@ body {
     min-height: 100vh;
 }
 .authentication{
-    background-color: var(--background-gray);
+    background-color: var(--background-dark);
     border-radius: 15px;
-    min-height: 600px;
-    min-width: 400px;
+    min-height: 500px;
+    max-width: 400px;
     overflow: hidden;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    position: relative;
 }
 .header{
     height: 3rem;
@@ -55,6 +56,7 @@ body {
     padding-top: 2px;
     display: flex;
     align-items: center;
+    border-bottom: solid 1px var(--background-gray);
 }
 .top {
     display: flex;
@@ -96,6 +98,11 @@ body {
     cursor: pointer;
     margin-right: 5px;
     color: #fff;
+    z-index: 1;
+}
+.tab:hover{
+    background-color: var(--background-gray);
+    transition: all .3s ease;
 }
 .tab-acctive{
     background-color: var(--background-gray);
@@ -106,9 +113,16 @@ body {
     align-items: center;
     min-height: 80%;
 }
-.login-form, .register-form{
+.title{
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.login-form {
     margin-top: 20px;
     width: 400px;
+}
+.register-form{
+    margin-top: 20px;
 }
 .form-input {
     font-family: 'Segoe UI', sans-serif;
@@ -123,7 +137,7 @@ body {
     border-radius: 15px;
     width: 100%;
     color: #fff;
-    background-color: var(--background-gray)
+    background-color: transparent;
 }
 input[type=text]:focus, input[type=number]:focus {
     outline: none;
@@ -133,7 +147,7 @@ input[type=text]:focus, input[type=number]:focus {
     position: absolute;
     left: 0;
     padding: 0.5em;
-    margin: .3rem 0 0 0.5em;
+    margin: .6rem 0 0 0.5em;
     pointer-events: none;
     transition: all 0.3s ease;
 }
@@ -144,14 +158,5 @@ input[type=text]:focus, input[type=number]:focus {
     padding: 0.4em;
   }
 .error-message{
-
-}
-.required-field-message{
-
-}
-.btn{
-
-}
-.btn-primary{
 
 }
