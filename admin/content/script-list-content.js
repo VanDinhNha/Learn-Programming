@@ -76,7 +76,7 @@ async function Delete(id){
             getAPILassify().catch(handleError);
         }
         else{
-            alert('xóa thất bại')
+            showNotification('error', 'Xóa thất bại')
         }
     }
 }

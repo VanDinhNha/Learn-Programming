@@ -49,19 +49,19 @@ document.querySelector("#form_edit_menu").addEventListener("submit", function(e)
     const icon = this.elements["icon"].value;
     const classify = this.elements["classify"].value;
     if(classify === "NONE" || classify === null){
-        alert('chưa chọn phân loại menu')
+        showNotification('warning', 'chưa chọn phân loại menu')
         return;
     }
     if(name === "" || name === null){
-        alert('chưa nhập tên');
+        showNotification('warning', 'chưa nhập tên');
         return;
     }
     if(rank === "" || rank === null){
-        alert('chưa nhập rank');
+        showNotification('warning', 'chưa nhập rank');
         return;
     }
     if(icon === "" || icon === null){
-        alert('chưa nhập icon');
+        showNotification('warning', 'chưa nhập icon');
         return;
     }
     if(arrRank.includes(Number(rank))){
@@ -84,5 +84,5 @@ async function editMenu(id, name, rank, icon, classify){
         },
     });
     closeLoad();
-    respomse.status === 200 ? alert('Sửa thành công') : alert('Sửa thất bại')
+    respomse.status === 200 ? showNotification('success', 'Sửa thành công') : showNotification('error', 'Sửa thất bại')
 }

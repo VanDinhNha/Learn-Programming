@@ -120,7 +120,7 @@ function show_file_upload(Image){
             reader.readAsDataURL(Image);
         }
         else{
-            alert('giới hạn dung lượng tất cả ảnh phải thấp hơn 1GB')
+            showNotification('warning', 'Giới hạn dung lượng tất cả ảnh phải thấp hơn 500MB');
             return;
         }
     }
@@ -172,7 +172,7 @@ function removeImage(element){
                 listFileImage.splice(elementIndex, 1) &&
                 element.parentNode.remove()
             :
-                alert('Xóa hình thất bại')
+                showNotification('error', 'Xóa hình thất bại')
         :
             element.parentNode.remove();
     });
@@ -407,7 +407,7 @@ function removeDelail(element){
             listDetail.splice(elementIndex, 1) &&
             element.parentNode.remove()
         :
-            alert('Xóa nội dung thất bại');
+        showNotification('error', 'Xóa nội dung thất bại')
     });
 }
 
@@ -425,7 +425,7 @@ function removeImageDetail(element){
                 listDetail[elementReviewIndex]["IMAGE_DATA"].splice(elementIndex, 1) &&
                 element.parentNode.remove()
             :
-                alert('Xóa hình thất bại')
+                showNotification('error', 'Xóa hình thất bại')
         :
             element.parentNode.remove();
     });
@@ -439,19 +439,19 @@ document.querySelector("#form_add_content").addEventListener("submit", function 
     const DESCRIBE = this.elements["describe"].value;
     const NOTE = this.elements["note"].value;
     if(ID_CLASSIFY === "NONE"){
-        alert('chưa chọn phân loại menu')
+        showNotification('error', 'Chưa chọn phân loại menu')
         return;
     }
     if(ID_MENU === "NONE"){
-        alert('chưa chọn menu');
+        showNotification('error', 'Chưa chọn menu')
         return;
     }
     if(NAME === ""){
-        alert('chưa nhập tên menu con');
+        showNotification('error', 'Chưa nhập tên menu con')
         return;
     }
     if(RANK === ""){
-        alert('chưa nhập tên thứ tự');
+        showNotification('error', 'Chưa nhập tên thứ tự')
         return;
     }
     if(arrRank.includes(Number(RANK.value))){
@@ -479,6 +479,6 @@ async function addContent(ID_MENU, NAME, RANK, DESCRIBE, NOTE){
         },
     });
     closeLoad()
-    respomse.status === 200 ? alert('thêm thành công')  : alert('thêm thất bại')
+    respomse.status === 200 ? showNotification('success', 'Theemthanhf công')  : showNotification('error', 'Thêm thất bại')
 }//& location.reload()
 

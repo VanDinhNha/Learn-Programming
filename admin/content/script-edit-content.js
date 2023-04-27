@@ -336,7 +336,7 @@ function show_file_upload(Image){
             reader.readAsDataURL(Image);
         }
         else{
-            alert('giới hạn dung lượng tất cả ảnh phải thấp hơn 500MB')
+            showNotification('warning', 'giới hạn dung lượng tất cả ảnh phải thấp hơn 500MB')
             return;
         }
     }
@@ -380,7 +380,7 @@ function removeImage(element){
                 element.parentNode.remove();
             }
             else{
-                alert('Xóa hình thất bại');
+                showNotification('error', 'Xóa hình thất bại');
             }
         }
         else{
@@ -531,7 +531,7 @@ function showFileUploadDetail(Index, Image, elementReview){
             reader.readAsDataURL(Image);
         }
         else{
-            alert('giới hạn dung lượng tất cả ảnh phải thấp hơn 500MB');
+            showNotification('warning', 'Giới hạn dung lượng tất cả ảnh phải thấp hơn 500MB');
             return; 
         }
     }
@@ -572,7 +572,7 @@ function removeDelail(element){
             element.parentNode.remove();
         }
         else{
-            alert('Xóa nội dung thất bại');
+            showNotification('error', 'Xóa nội dung thất bại');
         }
     });
 }
@@ -597,7 +597,7 @@ function removeImageDetail(arrElement){
                     element.parentNode.remove()
                 }
                 else{
-                    alert('Xóa hình thất bại');
+                    showNotification('error', 'Xóa hình thất bại');
                 }
             }
             else{
@@ -617,19 +617,19 @@ document.querySelector("#form_edit_content").addEventListener("submit", function
     const DESCRIBE = this.elements["describe"].value;
     const NOTE = this.elements["note"].value;
     if(ID_CLASSIFY === "NONE"){
-        alert('chưa chọn phân loại menu')
+        showNotification('warning', 'chưa chọn phân loại menu')
         return;
     }
     if(ID_MENU === "NONE"){
-        alert('chưa chọn menu');
+        showNotification('warning', 'chưa chọn menu');
         return;
     }
     if(NAME === ""){
-        alert('chưa nhập tên menu con');
+        showNotification('warning', 'chưa nhập tên menu con');
         return;
     }
     if(RANK === ""){
-        alert('chưa nhập tên thứ tự');
+        showNotification('warning', 'chưa nhập tên thứ tự');
         return;
     }
     if(arrRank.includes(Number(RANK))){
@@ -660,5 +660,5 @@ async function editContent(ID, ID_MENU, NAME, RANK, DESCRIBE, NOTE){
         },
     });
     closeLoad()
-    respomse.status === 200 ? alert('sửa thành công') : alert('sửa thất bại')
+    respomse.status === 200 ? showNotification('success', 'Sửa thành công') : showNotification('error', 'Sửa thất bại')
 }

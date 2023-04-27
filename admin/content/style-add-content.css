@@ -184,6 +184,8 @@
 }
 /*ui mobile*/
 @media (max-width: 767px) {
+    .layout-item:nth-child(2), 
+    .layout-item:nth-child(3), 
     .layout-item:nth-child(4), 
     .layout-item:nth-child(5),
     .layout-item:nth-child(6){

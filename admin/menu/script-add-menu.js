@@ -38,19 +38,19 @@ document.querySelector("#form_add_menu").addEventListener("submit", function (e)
     const icon = this.elements["icon"].value;
     const classify = this.elements["classify"].value;
     if(classify === "NONE"){
-        alert('chưa chọn phân loại menu')
+        showNotification('warning', 'chưa chọn phân loại menu')
         return;
     }
     if(name === ""){
-        alert('chưa nhập tên');
+        showNotification('warning', 'chưa nhập tên');
         return;
     }
     if(rank === ""){
-        alert('chưa nhập cấp độ');
+        showNotification('warning', 'chưa nhập cấp độ');
         return;
     }
     if(icon === ""){
-        alert('chưa nhập icon');
+        showNotification('warning', 'chưa nhập icon');
         return;
     }
     if(arrRank.includes(Number(rank))){
@@ -74,6 +74,6 @@ async function addMenu(classify, name, rank, icon){
     });
     closeLoad();
     respomse.status === 200 ? 
-        alert('thêm thành công') & location.reload() : 
-        alert('thêm thất bại')
+        showNotification('success', 'Thêm thành công') : 
+        showNotification('error', 'Thêm thất bại')
 }

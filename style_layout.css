@@ -772,13 +772,13 @@ input[type=search]:focus {
 }
 /* notification */
 .notification{
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 10px;
     z-index: 999;
     /* max-width: 300px; */
 }
-.error, .success{
+.error, .success, .warning{
     display: flex;
     align-items: center;
     padding: 0 10px;
@@ -789,7 +789,7 @@ input[type=search]:focus {
     border-radius: 10px;
     animation: showNotification 5s;
 }
-.error svg, .success svg{
+.error svg, .success svg, .warning svg{
     min-width: 20px;
     min-height: 20px;
     margin: 0;
@@ -799,7 +799,10 @@ input[type=search]:focus {
 }
 
 .success{
-    background-color: #3895ff;
+    background-color: #3181db;
+}
+.warning{
+    background-color: #c99d00;
 }
 .message{
     color: #fff;
