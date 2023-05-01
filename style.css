@@ -5,12 +5,14 @@
     max-width: 980px;
     margin: 4rem auto 1rem auto;
     transition: linear .3s;
-    background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
-    -webkit-background-clip: text;
+    /* background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
+    -webkit-background-clip: text; */
 }
 .content-body-name{
     text-align: center;
     margin: 20px 0px;
+     background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
+    -webkit-background-clip: text;
 }
 .content-body-name::after{
     content: "";
@@ -44,7 +46,7 @@
 }
 .content-body--describe, .content-body-detail__code--describe{
     font-size: 1.2rem;
-    color: transparent;
+    color: #fff;
     margin: 1rem 0 0 0;
     line-height: 2rem;
     padding: 0 10px;

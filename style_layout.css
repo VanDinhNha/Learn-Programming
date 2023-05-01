@@ -397,18 +397,24 @@ input[type="checkbox"]:checked + .check svg polyline {
     z-index: 3;
     box-shadow: 5px 0 20px var(--background-main);
 }
- .menu-border-avatar{
-    width: 170px;
-    margin: 10px auto;
-    padding: 5px;
-    border-radius: 50%;
-    background-image: linear-gradient(to right, #00fcda, #ff00ea);
+.bg-menu{
+    display: block;
+    width: 250px;
+    height: 100vh;
+    background-color: var(--background-dark);
+    position: absolute;
+    bottom: 0;
 }
-.avatar{
-    position: relative;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    object-fit: cover;
+.menu-top{
+    width: 100%;
+    height: 4rem;
+}
+.logo{
+    display: block;
+    font-size: 40px;
+    text-align: center;
+    padding: 10px;
+    height: 100%;
 }
 .name{
     margin: 0 10px;
@@ -591,7 +597,6 @@ input[type="checkbox"]:checked + .check svg polyline {
     bottom: 0;
     border-top: solid 1px black;
     background-color: var(--background-dark);
-    height: 70px;
     width: 230px;
     z-index: 6;
 }
@@ -616,17 +621,20 @@ input[type="checkbox"]:checked + .check svg polyline {
 }
 .content-header{
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 250px;
     background-color: var(--background-dark);
     height: 4rem;
+    width: calc(100% - 250px);
     display: flex;
-    justify-content: center;
+    align-items: center;
     z-index: 1;
 }
 .search-box {
-    width: 60%;
-    margin: -17px 0 0 250px;
-    padding: 10px;
+    width: 80%;
+    display: flex;
+    position: relative;
+    margin-left: 20px;
 }
 .search-input{
     display: block;
@@ -647,8 +655,9 @@ input[type="checkbox"]:checked + .check svg polyline {
 }
 .icon-search{
     position: relative;
-    top: 30px;
+    top: 10px;
     left: 10px;
+    position: absolute;
 }
 input[type=search] {
     color: var(--color-text);
@@ -659,6 +668,73 @@ input[type=search]:focus {
     padding-left: 40px;
     outline: none;
     color: var(--color-text);
+}
+.nav-link{
+    display: flex;
+    width: 20%;
+    flex-direction: row;
+    margin: 0 10px;
+    align-items: center;
+    color: var(--color-text);
+}
+.nav-link:hover{
+    color: var(--while)
+}
+.avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.name-user{
+    margin-left: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.dropdown::after{
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+.dropdow-list{
+    position: absolute;
+    right: 2rem;
+    top: 5rem;
+    display: none;
+    background-color: var(--background-dark);
+    padding: 5px;
+    width: 200px;
+    border-radius: 5px;
+}
+.dropdow-list::before{
+    content: "";
+    display: inline-block;
+    vertical-align: 0.255em;
+    border-top: 0;
+    border-right: .7em solid transparent;
+    border-bottom: .7em solid var(--background-dark);
+    border-left: .7em solid transparent;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+}
+.dropdown-item{
+    display: flex;
+    color: var(--color-text);
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+.dropdown-item:hover{
+    color: var(--while)
+}
+.open{
+    display: block;
 }
 /**/
 .footer{
@@ -787,7 +863,7 @@ input[type=search]:focus {
     min-height:50px;
     margin-bottom: 10px;
     border-radius: 10px;
-    animation: showNotification 5s;
+    animation: showNotification 3s;
 }
 .error svg, .success svg, .warning svg{
     min-width: 20px;

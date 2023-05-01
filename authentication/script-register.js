@@ -1,6 +1,12 @@
-// showNotification('success', 'hello cái  quần què');
-// showNotification('error', 'hello cái  quần què');
-// showNotification('warning', 'hello cái  quần què');
+checkToken();
+
+function checkToken(){
+    const local = localStorage.getItem('jwt');
+    const session = sessionStorage.getItem('jwt');
+    if(local || session){
+        window.location='/'
+    }
+}
 
 document.querySelector("#register").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -11,12 +17,12 @@ document.querySelector("#register").addEventListener("submit", function (e) {
     const confirm_password = this.elements["confirm_password"].value;
     const cbx_register = this.elements["cbx_register"].checked;
     
-    addUser(username, displayname, email, password, confirm_password, cbx_register)//.catch(handleError);
+    addUser(username, displayname, email, password, confirm_password, cbx_register).catch(handleError);
 })
 
 async function addUser(username, displayname, email, password, confirm_password, cbx_register){
-    // showLoad();
-    const response = await fetch(urlAuthenticationLocal,{
+    showLoad();
+    const response = await fetch(urlRegister,{
         method: "POST",
         body: JSON.stringify({
             "USER_NAME": username, 
@@ -30,8 +36,9 @@ async function addUser(username, displayname, email, password, confirm_password,
             "Content-type": "application/json; charset=UTF-8",
         },
     });
+    closeLoad();
     const data = await response.json();
     data.Success ? 
-        showNotification('success', data.Message) : 
+        window.location='./login.html' : 
         showNotification('error', data.Message)
 }

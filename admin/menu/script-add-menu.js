@@ -62,6 +62,9 @@ document.querySelector("#form_add_menu").addEventListener("submit", function (e)
 })
 
 async function addMenu(classify, name, rank, icon){
+    const token = localStorage.getItem('jwt') !== null ?
+        localStorage.getItem('jwt'):
+        sessionStorage.getItem('jwt');
     showLoad();
     const respomse = await fetch(urlMenu,{
         method: "POST",
@@ -70,6 +73,7 @@ async function addMenu(classify, name, rank, icon){
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8",
+            'Authorization': 'Bearer ' + token
         },
     });
     closeLoad();

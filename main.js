@@ -1,3 +1,19 @@
+async function getUser(){
+    const token = checkToken();
+    if(token !== null){
+        const response = await fetch(urlUserLocal,
+            {  
+            method: 'GET',
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                'Authorization': 'Bearer ' + token
+            }
+        });
+        const user = await response.json();
+        console.log(user);
+    }
+}
+getUser();
 loadDataMenu().catch(handleError);
 
 const copy_code = (opj) => {

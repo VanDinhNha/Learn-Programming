@@ -6,7 +6,11 @@ const urlMenuLocal = 'https://localhost:44358/api/MENU/';
 const urlContent = 'http://learn-programming-test.com/api/CONTENT/';
 const urlContentLocal = 'https://localhost:44358/api/CONTENT/';
 const urlClassify = 'http://learn-programming-test.com/api/CLASSIFY/';
-const urlAuthenticationLocal = 'https://localhost:44358/api/AUTHENTICATION/';
+const urlRegisterLocal = 'https://localhost:44358/api/REGISTER/';
+const urlRegister = 'http://learn-programming-test.com/api/REGISTER/';
+const urlLoginLocal = 'https://localhost:44358/api/LOGIN/'
+const urlLogin = 'http://learn-programming-test.com/api/LOGIN/'
+const urlUserLocal = 'https://localhost:44358/api/USER/'
 
 const showMenuChild = (obj, obj_id = null) => {
     if(obj !== null){
@@ -32,8 +36,10 @@ document.querySelector('#menu_checkbox') !== null ?
 
 const acctiveMenu = () => {
     const menu = document.querySelector('.menu');
+    const bg_menu = document.querySelector('.bg-menu');
     const mobile_menu_background = document.querySelector('.mobile-menu-background');
     menu.classList.toggle('toggle-menu');
+    bg_menu.classList.toggle('toggle-bg-menu')
     mobile_menu_background.hasAttribute('style') ?
     mobile_menu_background.removeAttribute('style') :
     mobile_menu_background.setAttribute('style', 'display: block')
@@ -141,12 +147,12 @@ function showNotification(type, message = ""){
     const element = arrElement[0];
     function startTimer(){ 
         timerHidden = setTimeout(() => {
-            element.setAttribute('style', 'animation: hiddenNotification 5s');
+            element.setAttribute('style', 'animation: hiddenNotification 3s');
             clearInterval(Interval);
             clearTimeout(timerHidden);
             setTimeout(() => {
                 element.remove();
-            }, 4500);//4500 là vì thời gian phải nhỏ hơn 5s của animation: hiddenNotification
+            }, 2500);//4500 là vì thời gian phải nhỏ hơn 5s của animation: hiddenNotification
         }, delay - elapsedTime);
         Interval = setInterval(() => {
             elapsedTime += 1;
@@ -167,6 +173,41 @@ function showNotification(type, message = ""){
     startTimer();
 }
 
+function checkToken(){
+    const token = localStorage.getItem('jwt') !== null ?
+    localStorage.getItem('jwt') : sessionStorage.getItem('jwt')
+    if(token !== null){
+        document.querySelector('#logout').addEventListener('click', () => {
+            localStorage.removeItem('jwt');
+            sessionStorage.removeItem('jwt');
+            window.location.href = 'index.html';
+        })
+        document.querySelector('#login').remove();
+        document.querySelector('#register').remove();
+        return token;
+    }
+    else{
+        document.querySelector('#logout').remove();
+        return null;
+    }
+}
+
+document.querySelectorAll('.dropdown').length > 0 ?
+document.querySelectorAll('.dropdown').forEach(element => {
+    const dropdow_list = element.nextElementSibling;
+    element.addEventListener('click', (e) => {
+        e.preventDefault();
+        if(dropdow_list.classList.contains('dropdow-list')){
+            dropdow_list.classList.toggle('open');
+        }
+    })
+    document.body.addEventListener("click", (e) => {
+        if(!element.contains(e.target)){
+            dropdow_list.classList.remove('open');
+        }
+    })
+}) :
+""
 
 
 
