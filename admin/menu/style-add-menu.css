@@ -27,12 +27,6 @@
     -ms-user-select: none;
     user-select: none;
 }
-/*ui tablet*/
-/* @media (min-width: 768px) and (max-width: 991px) { */
-    /* .content-layout{
-        grid-template-columns: 1fr 1fr;
-    } */
-/* } */
 
 /* ui mobile */
 @media (max-width: 767px) {

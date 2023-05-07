@@ -28,80 +28,32 @@
                </div>
                 <ul class="menu-ul">
                     <li class="menu-ul-li"></li>
-                    <li class="menu-buttom">
-                        <a id="login" href="./authentication/login.html" class="menu-item__parent">
-                            <span class="menu-item__parent--line"></span>
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15 16.5V19C15 20.1046 14.1046 21 13 21H6C4.89543 21 4 20.1046 4 19V5C4 3.89543 4.89543 3 6 3H13C14.1046 3 15 3.89543 15 5V8.0625M20 12L9 12M9 12L11.5 14.5M9 12L11.5 9.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                            <span class="menu-item__name">Đăng Nhập</span>
-                            <span class="hover-text" style="margin-top: 5px;" aria-hidden="true">Đăng Nhập</span>
-                        </a>
-                        <a id="register" href="./authentication/register.html" class="menu-item__parent">
-                            <span class="menu-item__parent--line"></span>
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#FFF"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect x="0" fill="none" width="24" height="24"></rect> <g> <circle cx="15" cy="8" r="4"></circle> <path d="M15 20s8 0 8-2c0-2.4-3.9-5-8-5s-8 2.6-8 5c0 2 8 2 8 2zM6 10V7H4v3H1v2h3v3h2v-3h3v-2z"></path> </g> </g></svg>
-                            <span class="menu-item__name">Đăng Ký</span>
-                            <span class="hover-text" style="margin-top: 5px;" aria-hidden="true">Đăng Ký</span>
-                        </a>
-                        <div id="logout" class="menu-item__parent">
-                            <span class="menu-item__parent--line"></span>
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15 16.5V19C15 20.1046 14.1046 21 13 21H6C4.89543 21 4 20.1046 4 19V5C4 3.89543 4.89543 3 6 3H13C14.1046 3 15 3.89543 15 5V8.0625M11 12H21M21 12L18.5 9.5M21 12L18.5 14.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                            <span class="menu-item__name">Đăng Xuất</span>
-                            <span class="hover-text" style="margin-top: 5px;" aria-hidden="true">Đăng Xuất</span>
-                        </div>
-                    </li>
                 </ul>
             </div>
             <div class="mobile-menu-background"></div>
             <div class="content">
                 <nav class="content-header">
-                    <form class="search-box">
+                    <div class="search-box">
                         <svg class="icon-search" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#4e4d4d"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Search_Magnifying_Glass"> <path id="Vector" d="M15 15L21 21M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17Z" stroke="#<svg viewBox=" 0="" 24="" 24"="" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Search_Magnifying_Glass"> <path id="Vector" d="M15 15L21 21M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g>" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;</path> </g> </g></svg>
-                        <input class="search-input" type="search" placeholder="Search">
-                    </form>
-                    <a class="nav-link dropdown" href="#">
-                        <img src="" alt="avatar" class="avatar">
-                        <span class="name-user"></span>
-                    </a>
-                    <div class="dropdow-list">
-                        <a href="#" class="dropdown-item">Thông tin cá nhân</a>
-                        <a href="#" class="dropdown-item">Tin Nhắn</a>
-                        <a href="#" class="dropdown-item">Đăng Xuất</a>
+                        <input class="search-input" type="search" placeholder="Tìm Kiếm">
                     </div>
                 </nav>
+                <div class="search-results">
+                    <div class="search-results-content"></div>
+                </div>
                 <div class="content-body">
-                    <!-- <div class="content-body-name">
-                        <span class="content-body-name--text">
-                            Giới Thiệu
-                        </span>
-                    </div>
-                    <p class="content-body--describe">
-                        Chào mọi người mình là Văn Đình Nhã, mình đã có làm qua Backend .Net được một năm,
-                        hiện mình đang học thêm Forntend với mục tiêu sẽ trở thành một web developer.
-                        Nguyên nhân mình làm trang web này là trong lúc mình học thì mình nhận thấy là
-                        có những câu lệnh mình học qua và hiểu được nhưng do không dùng nhiều thì đôi lúc lại quên
-                        , có thể là quên câu lệnh viết ra sao, cấu trúc câu gồm những gì hoặc tệ hơn là không nhớ
-                        câu lệnh đó luôn. Những lúc như vậy mình lại lục lại những bài học, những video đã coi,
-                        những ghi chép trong lúc học hoặc lênh mạng search. Những lúc như vậy rất mất thời gian,
-                        mình biết chỉ có làm nhiều mới nhớ lâu được nhưng mình thì mới học và không phải lệnh nào 
-                        cũng dùng thường xuyên để nhớ hết và mình cũng muốn có một nơi lưu trữ code theo ý mình 
-                        để lưu những dòng code mà sau này mình có thể dùng lại hoặc những dòng code mình tìm đươc 
-                        trên mạng mà chưa dùng tới hoặc đơn giản là lưu code, chức năng và giải thích để có quên 
-                        vô tìm lại cho nhanh, Nhưng quan trọng hơn hết là vừa làm vừa học cho để hiểu dễ nhớ và 
-                        còn nhiều những lý do khác nữa. Vì trang này mình vừa làm vừa học nên chỉ mới có giao diện 
-                        chứ ko có database gì hết, mình chỉ tự viết chay một cái json để hiển thị nhiều thông tin 
-                        khỏi phải code nhiều trang thôi. Sau này mình có thể sẽ phát triển web để có database đàng 
-                        hoàng. Cảm ơn mọi người đã đọc tới đây, vì đang vừa học vừa làm nên code còn rất chuối mọi 
-                        người thông cảm và nếu lối hành văn có lũng cũng sai chính tả hay chấm phẩy không đúng mọi 
-                        người bỏ qua. Nếu có bất kỳ góp ý nào để mình phát triển web tốt hơn hoặc giúp mình có thêm 
-                        chút kiến thức thì có thể liên hệ qua telegram, facebook. Cảm ơn mọi người đã đọc tới đây. 
-                    </p> -->
+                    
                 </div>
             </div>
         </div>
         <footer class="footer">
             <div class="footer-body">
                     <div class="center">
-                        <h2 class="name">Văn Đình Nhã</h2>
-                        <p style="margin: 2rem 0;">Trang web chia sẽ kiến thức học lập trình</p>
+                        <a href="/" class="logo">Logo</a>
+                        <div style="margin: 2rem 0;">
+                            <p style="margin-bottom: 10px; font-size: 1.5rem;">Trang web chia sẽ kiến thức học lập trình</p>
+                            <p style="text-align: center;">vandinhnha@gmail.com</p>
+                        </div>
                         <div class="social-links">
                             <a href="https://www.facebook.com/profile.php?id=100050285713548&mibextid=ZbWKwL" target="_blank" class="social-btn flex-center">
                                 <svg viewBox="0 0 24 24" id="meteor-icon-kit__regular-facebook" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 17.9895 4.38823 22.954 10.125 23.8542V15.4688H7.07812V12H10.125V9.35625C10.125 6.34875 11.9165 4.6875 14.6576 4.6875C15.9705 4.6875 17.3438 4.92188 17.3438 4.92188V7.875H15.8306C14.3399 7.875 13.875 8.80001 13.875 9.74899V12H17.2031L16.6711 15.4688H13.875V23.8542C19.6118 22.954 24 17.9895 24 12Z" fill="#4267B2"></path></g></svg>

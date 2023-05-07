@@ -6,6 +6,7 @@ getAPILassify().catch(handleError);
 async function getAPILassify(){
     const response = await fetch(urlMenu);
     arrClassify = await response.json();
+    arrClassify === null ? arrClassify = [] : ""
     loadDatacLassify();
 }
 
@@ -34,20 +35,18 @@ document.querySelector("#classify_menu",).addEventListener("change", (e) => {
 
 document.querySelector("#menu_main").addEventListener("change", (e) => {
     e.preventDefault();
-    let count = 1; 
     const table = document.querySelector("#table_content");
     const classify_menu = document.querySelector("#classify_menu");
     table.childNodes[3].innerHTML = '';
-    arrClassify[classify_menu.value].MENU[e.target.value].MENU_CHILD.forEach(item => {
-        showTableContent(count, item.ID_CONTENT, item.NAME, item.RANK, item.ID_CONTENT);
-        count++;
+    arrClassify[classify_menu.value].MENU[e.target.value].MENU_CHILD.forEach((item, i) => {
+        showTableContent(i, item.ID_CONTENT, item.NAME, item.RANK, item.ID_CONTENT);
     })
 });
 
 function showTableContent(i, ID, NAME, RANK, ID_CONTENT){
     const table = document.querySelector("#table_content");
     let template = `<tr id="item_menu_${ID}">
-        <td>${i}</td>
+        <td>${i+1}</td>
         <td>${NAME}</td>
         <td>${RANK}</td>
         <td>
@@ -63,7 +62,7 @@ async function Delete(id){
     if(id !== null){
        showLoad();
         closeModal();
-        const respomse = await fetch(urlContentLocal + id,{
+        const respomse = await fetch(urlContent + id,{
             method: "DELETE",
             headers: {
                 "Content-type": "application/json; charset=UTF-8",

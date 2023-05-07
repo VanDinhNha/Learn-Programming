@@ -23,8 +23,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-image: url("./../../image/undraw_upload_image_re_svxx.svg");
-    background-size: contain; */
 }
 .title-file-upload,
 .title-file-upload--detail{
@@ -166,9 +164,7 @@
 }
 /*ui mobile*/
 @media (max-width: 767px) {
-    .layout-item:nth-child(4), 
-    .layout-item:nth-child(5),
-    .layout-item:nth-child(6){
+    .layout-item:nth-child(n+1){
         grid-column: 1/1;
     }
     .file-upload-container,
@@ -197,10 +193,7 @@
     .layout--detail{
         grid-template-columns: 1fr;
     }
-    .layout-item--detail:nth-child(3), 
-    .layout-item--detail:nth-child(4),
-    .layout-item--detail:nth-child(5),
-    .layout-item--detail:nth-child(6){
+    .layout-item--detail:nth-child(n+1){
         grid-column: 1/1;
     }
 }

@@ -7,9 +7,6 @@
     overflow: auto;
     max-height: 800px;
 }
-.layout{
-    grid-template-columns: 1fr 1fr; 
-}
 table{
     width: 100%;
     color: var(--color-text);
@@ -38,9 +35,4 @@ tr:hover{
     transition: .5s;
     background-image: linear-gradient(to right, var(--color-main1), var(--color-main2));
     color: var(--background-main);
-}
-@media (max-width: 767px) {
-    .layout-item:nth-child(n+1){
-        grid-column: 1/3;
-    }
 }

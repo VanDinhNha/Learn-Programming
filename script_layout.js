@@ -1,16 +1,17 @@
 const url = location.href;
-const urlRankMenu = 'http://learn-programming-test.com/api/RANK_MENU/';
-const urlRankMenuChild = 'http://learn-programming-test.com/api/RANK_MENU_CHILD/';
-const urlMenu = 'http://learn-programming-test.com/api/MENU/';
-const urlMenuLocal = 'https://localhost:44358/api/MENU/';
-const urlContent = 'http://learn-programming-test.com/api/CONTENT/';
-const urlContentLocal = 'https://localhost:44358/api/CONTENT/';
-const urlClassify = 'http://learn-programming-test.com/api/CLASSIFY/';
-const urlRegisterLocal = 'https://localhost:44358/api/REGISTER/';
-const urlRegister = 'http://learn-programming-test.com/api/REGISTER/';
-const urlLoginLocal = 'https://localhost:44358/api/LOGIN/'
-const urlLogin = 'http://learn-programming-test.com/api/LOGIN/'
-const urlUserLocal = 'https://localhost:44358/api/USER/'
+// const urlRankMenu = 'http://learn-programming-test.com/api/RANK_MENU/';
+// const urlRankMenuChild = 'http://learn-programming-test.com/api/RANK_MENU_CHILD/';
+// const urlMenu = 'http://learn-programming-test.com/api/MENU/';
+// const urlContent = 'http://learn-programming-test.com/api/CONTENT/';
+// const urlClassify = 'http://learn-programming-test.com/api/CLASSIFY/';
+// const urlSearch = 'http://learn-programming-test.com/api/SEARCH?keyword=';
+
+const urlRankMenu = 'http://learn-programming.somee.com/api/RANK_MENU/';
+const urlRankMenuChild = 'http://learn-programming.somee.com/api/RANK_MENU_CHILD/';
+const urlMenu = 'http://learn-programming.somee.com/api/MENU/';
+const urlContent = 'http://learn-programming.somee.com/api/CONTENT/';
+const urlClassify = 'http://learn-programming.somee.com/api/CLASSIFY/';
+const urlSearch = 'http://learn-programming.somee.com/api/SEARCH?keyword=';
 
 const showMenuChild = (obj, obj_id = null) => {
     if(obj !== null){
@@ -173,42 +174,56 @@ function showNotification(type, message = ""){
     startTimer();
 }
 
-function checkToken(){
-    const token = localStorage.getItem('jwt') !== null ?
-    localStorage.getItem('jwt') : sessionStorage.getItem('jwt')
-    if(token !== null){
-        document.querySelector('#logout').addEventListener('click', () => {
-            localStorage.removeItem('jwt');
-            sessionStorage.removeItem('jwt');
-            window.location.href = 'index.html';
-        })
-        document.querySelector('#login').remove();
-        document.querySelector('#register').remove();
-        return token;
-    }
-    else{
-        document.querySelector('#logout').remove();
-        return null;
+function highlightSelection() {
+    let userSelection = window.getSelection();
+    for(let i = 0; i < userSelection.rangeCount; i++) {
+        highlightRange(userSelection.getRangeAt(i));
     }
 }
 
-document.querySelectorAll('.dropdown').length > 0 ?
-document.querySelectorAll('.dropdown').forEach(element => {
-    const dropdow_list = element.nextElementSibling;
-    element.addEventListener('click', (e) => {
-        e.preventDefault();
-        if(dropdow_list.classList.contains('dropdow-list')){
-            dropdow_list.classList.toggle('open');
+document.querySelector('.search-input').addEventListener("keydown", (e) => {
+    if (e.keyCode === 13) {
+        const keyword = e.target.value;
+        if(keyword.trim().length > 0){
+            loadDataSearch(keyword).catch(handleError);
         }
-    })
+        else if(keyword.trim().length === 0){
+            document.querySelector(".search-results-content").innerHTML = "";
+        }
+    }
+});
+
+document.querySelector('.search-input') !== null ?
+document.querySelector(".search-input").addEventListener("keyup", debounceFn(function (e) {
+    e.preventDefault();
+    const keyword = e.target.value;
+    if(keyword.trim().length > 0){
+        loadDataSearch(keyword).catch(handleError);
+    }
+    else if(keyword.trim().length === 0){
+        document.querySelector(".search-results-content").innerHTML = "";
+    }
+}, 1000)) : ""
+
+async function loadDataSearch(keyword){
+    const search_results = document.querySelector(".search-results-content");
+    const search = document.querySelector('.search-input');
+    search_results.innerHTML = "";
+    const response = await fetch(urlSearch + keyword);
+    const data = await response.json();
+    if(data.length > 0){
+        data.forEach(item => {
+            search_results.innerHTML += `<a href="/?id-menu=${item.ID_MENU}&id-content=${item.ID_CONTENT}" class="item-results">${item.NAME}</a>`;
+        });
+    }
+    else{
+        search_results.innerHTML = `<p class="no-result">Không tìm thấy kết quả "${keyword}" </p>`;
+    }
     document.body.addEventListener("click", (e) => {
-        if(!element.contains(e.target)){
-            dropdow_list.classList.remove('open');
+        if(!search.contains(e.target) && !search_results.contains(e.target)){
+            search_results.innerHTML = "";
         }
-    })
-}) :
-""
-
-
+    });
+}
 
 

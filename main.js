@@ -1,19 +1,3 @@
-async function getUser(){
-    const token = checkToken();
-    if(token !== null){
-        const response = await fetch(urlUserLocal,
-            {  
-            method: 'GET',
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-                'Authorization': 'Bearer ' + token
-            }
-        });
-        const user = await response.json();
-        console.log(user);
-    }
-}
-getUser();
 loadDataMenu().catch(handleError);
 
 const copy_code = (opj) => {
@@ -57,9 +41,11 @@ function showMenuData(name = "", listNenu = []){
 async function loadDataMenu(){
     const response = await fetch(urlMenu);
     const menu_item = await response.json();
-    menu_item.forEach(itemClassify => {
-        showMenuData(itemClassify.NAME, itemClassify.MENU);
-    });
+    if(menu_item !== null){
+        menu_item.forEach(itemClassify => {
+            showMenuData(itemClassify.NAME, itemClassify.MENU);
+        });
+    }
     loadDataContent(getUrlVars(url)).catch(handleError);
 }
 

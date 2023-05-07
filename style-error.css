@@ -11,19 +11,6 @@
     --while: #fff;
     --font-avo: "Avo", sans-serif;
 }
-/*
-     
-       --color-text: #4e4d4d;
-    --color-text-active: #fff;
-    --color-main1: #00f8ec;
-    --color-main2: #f000f8; 
-    --color-red: #ff2121;
-    --color-red-hover: #b41616;
-    --color-green: #20ff18;
-    --color-green-hover: #15b110;
-    --color-blue: #1c3eff;
-    --color-blue-hover: #162eb9;
-*/
 *,
 *:before,
 *:after {
@@ -118,89 +105,7 @@ body {
     margin-top: 30px;
     padding: 0 25px;
 }
-.code {
-    font-size: 20px;
-}
-.mtk1{
-    color: #b1b1b1;
-}
-.mtk3 {
-    color: transparent;
-    background-image: linear-gradient(to right top, #7526fd, #ffb4dc, #fef0d1);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-}
-.mtk5 {
-    color: transparent;
-    background-image: linear-gradient(var(--gradient-dir1), #20e3b2, #4dd78a);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-}
-.mtk7 {
-    color: transparent;
-    background-image: linear-gradient(to right bottom, #fc6c8f, #ffb86c);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.mtk10,
-.mtk15 {
-    color: transparent;
-    background-image: linear-gradient(to left top, #fc6c8f, #ff2ced, #ffb86c);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.mtk14 {
-    color: transparent;
-    background-image: linear-gradient(var(--gradient-dir1), #d56200, #ff2020);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-}
-.mtk16 {
-    color: transparent;
-    background-image: linear-gradient(var(--gradient-dir1), #d66efd, #6a5af9);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-}
-.mtk9,
-.mtk17 {
-    color: transparent;
-    background-image: linear-gradient(to right top, #0072ff, #2cccff);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-}
-.mtk18 {
-    color: transparent;
-    background-image: linear-gradient(var(--gradient-dir2), #82aaff 50%, #3d6ef7);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    font-style: normal;
-}
-.tab1{
-    margin-left: 2rem;
-}
-.tab2{
-    margin-left: 4rem;
-}
-.tab3{
-    margin-left: 6rem;
-}
-.tab4{
-    margin-left: 8rem;
-}
-.space-4 {
-    margin-left: 35px;
-}
-.space-4x2 {
-    margin-left: 70px;
-}
+
 
 .web{
     background-color: var(--background-dark);

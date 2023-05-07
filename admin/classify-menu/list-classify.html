@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Menu</title>
+    <title>Danh Sách Phân Loại</title>
     <link rel="stylesheet" href="./../../style_layout.css">
-    <link rel="stylesheet" href="style-list-menu.css">
+    <link rel="stylesheet" href="style-list-classify.css">
 </head>
 <body>
     <div class="wrapper">
@@ -34,10 +34,10 @@
                                     <span class="hover-text" aria-hidden="true">Thêm</span>
                                 </div>
                                 <div class="menu-item__child">
-                                    <a href="./../classify-menu/add-classify.html" class="menu-item__link">
+                                    <a href="./add-classify.html" class="menu-item__link">
                                         Thêm Phân Loại
                                     </a>
-                                    <a href="./add-menu.html" class="menu-item__link">
+                                    <a href="./../menu/add-menu.html" class="menu-item__link">
                                         Thêm Menu
                                     </a>
                                     <a href="./../content/add-content.html" class="menu-item__link">
@@ -53,10 +53,10 @@
                                     <span class="hover-text acctive__hover-text" aria-hidden="true">Danh Sách</span>
                                 </div>
                                 <div class="">
-                                    <a href="./../classify-menu/list-classify.html" class="menu-item__link">
+                                    <a href="./list-menu.html" class="menu-item__link acctive__menu-item__link">
                                         Danh Sách Phân Loại
                                     </a>
-                                    <a href="./list-menu.html" class="menu-item__link acctive__menu-item__link">
+                                    <a href="./../menu/list-menu.html" class="menu-item__link">
                                         Danh Sách Menu
                                     </a>
                                     <a href="./../content/list-content.html" class="menu-item__link">
@@ -81,27 +81,13 @@
                     <div class="search-results-content"></div>
                 </div>
                 <div class="content-body">
-                    <div class="layout">
-                        <div class="layout-item">
-                            <label class="color-text" for="classify_menu">Chọn Phân Loại Menu</label>
-                            <div class="form-group">
-                                
-                                <select id="classify_menu">
-                                    <option value="NONE">Chọn ...</option>
-                                </select>
-                                <button class="btn bg-blue ml-1" id="btn_reset">reset</button>
-                            </div>
-                            
-                        </div>
-                    </div>
                     <div class="sticky">
-                        <table id="table_menu">
+                        <table id="table_classify">
                             <thead>
                                 <tr>
                                     <th style="max-width: 10px;">STT</th>
-                                    <th>Tên Menu</th>
+                                    <th>Tên Phân Loại</th>
                                     <th>Cấp Độ</th>
-                                    <th>ICON</th>
                                     <th>Thao Tác</th>
                                 </tr>
                             </thead>
@@ -160,7 +146,7 @@
     </div>
     <div class="notification"></div>
     <script src="./../../script_layout.js"></script>
-    <script src="./script-list-menu.js"></script>
+    <script src="./script-list-classify.js"></script>
     <script>
         const Loading = document.querySelector(".loading");
    </script>

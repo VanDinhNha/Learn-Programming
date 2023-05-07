@@ -479,6 +479,6 @@ async function addContent(ID_MENU, NAME, RANK, DESCRIBE, NOTE){
         },
     });
     closeLoad()
-    respomse.status === 200 ? showNotification('success', 'Theemthanhf công')  : showNotification('error', 'Thêm thất bại')
+    respomse.status === 200 ? showNotification('success', 'Thên thành công')  : showNotification('error', 'Thêm thất bại')
 }//& location.reload()
 

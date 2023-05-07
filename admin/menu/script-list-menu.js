@@ -3,7 +3,7 @@ let arrClassify = [];
 
 function showTableMenu(i, ID, ICON, NAME, RANK, ID_CLASSIFY){
     let template = `<tr id="item_menu_${ID}">
-        <td>${i}</td>
+        <td>${i+1}</td>
         <td>${NAME}</td>
         <td>${RANK}</td>
         <td>
@@ -23,12 +23,14 @@ async function loadDataClassify(value = -1, callBack = null){
     let count = 0;
     const response = await fetch(urlMenu);
     arrClassify = await response.json();
-    arrClassify.forEach(element => {
-        classify_menu.innerHTML += `<option ${
-            Number(value) + 1 === Number(element.ID) ? "selected" : ""
-        } value="${count}">${element.NAME}</option>`
-        count++;
-    });
+    if(arrClassify!== null){
+        arrClassify.forEach(element => {
+            classify_menu.innerHTML += `<option ${
+                Number(value) + 1 === Number(element.ID) ? "selected" : ""
+            } value="${count}">${element.NAME}</option>`
+            count++;
+        });
+    }
     if(callBack !== null){
         callBack(value);
     }
@@ -42,11 +44,9 @@ document.querySelector("#classify_menu").addEventListener("change", (e) => {
 
 function handleShowTable(value){
     if(value !== "NONE"){
-        let count = 1;
         document.querySelector("#table_menu").childNodes[3].innerHTML = '';
-        arrClassify[value].MENU.forEach(item => {
-            showTableMenu(count, item.ID, item.ICON, item.NAME, item.RANK, arrClassify[value].ID);
-            count++;
+        arrClassify[value].MENU.forEach((item, i) => {
+            showTableMenu(i, item.ID, item.ICON, item.NAME, item.RANK, arrClassify[value].ID);
         })
     }
 }
@@ -55,7 +55,7 @@ async function Delete(id){
     if(id !== null){
         showLoad();
         closeModal();
-        const respomse = await fetch(urlMenuLocal + id,{
+        const respomse = await fetch(urlMenu + id,{
             method: "DELETE",
             headers: {
                 "Content-type": "application/json; charset=UTF-8",

@@ -6,15 +6,18 @@ async function getAllClassify(){
     const list_classify = document.querySelector("#classify");
     const response = await fetch(urlClassify);
     const classify_item = await response.json();
-    classify_item.forEach(item => {
-        list_classify.innerHTML += `<option value="${item.ID}">${item.NAME}</option>`
-    });
+    if(classify_item !== null){
+        classify_item.forEach(item => {
+            list_classify.innerHTML += `<option value="${item.ID}">${item.NAME}</option>`
+        });
+    }
     closeLoad();
 }
 
 async function getAllRankMenu(value){
     const response = await fetch(urlRankMenu + value);
     arrRank = await response.json();
+    arrRank === null ? arrRank = [] : '';
 }
 
 document.querySelector('#classify').addEventListener('change', (e) => {
@@ -62,9 +65,6 @@ document.querySelector("#form_add_menu").addEventListener("submit", function (e)
 })
 
 async function addMenu(classify, name, rank, icon){
-    const token = localStorage.getItem('jwt') !== null ?
-        localStorage.getItem('jwt'):
-        sessionStorage.getItem('jwt');
     showLoad();
     const respomse = await fetch(urlMenu,{
         method: "POST",
